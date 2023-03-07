@@ -1,0 +1,20 @@
+{% block content%}
+    <section class='login'>
+
+        <div class='login__signup'>
+            <h2 class>Inscrivez-vous maintenant</h2>
+            <a href="{% url 'signup' %}"><button class='btn login__btn'>S'inscrire</button></a>
+        </div>
+
+        <div class='login__signin'>
+            <h2>Connectez-vous</h2>
+            <p>{{ message }}</p>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input class='btn login__btn' type="submit" value="Se connecter">
+            </form>
+        </div>
+
+    </section>
+{% endblock %}
