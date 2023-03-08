@@ -3,6 +3,7 @@ from django.contrib.auth.views import LoginView
 
 from authentication import views
 
+# app_name = 'authentication'
 urlpatterns = [
     path(
         "",
