@@ -30,7 +30,7 @@ class LoginPage(View):
             )
             if user is not None:
                 login(request, user)
-                redirect('home')
+                redirect('reviews')
             else:
                 message = 'Identifiants invalides.'
         return render(
@@ -53,9 +53,7 @@ def signup(request):
             user = form.save()
             login(request, user)
             return redirect(settings.LOGIN_REDIRECT_URL)
-    return render(
-        request, 'authentication/signup.html', context={'form': form}
-    )
+    return render(request, 'registration/signup.html', context={'form': form})
 
 
 def unsubscribe(request):

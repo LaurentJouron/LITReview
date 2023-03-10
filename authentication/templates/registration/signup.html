@@ -1,0 +1,29 @@
+{% block content%}
+    <section class='signup'>
+        <h2 class='title'>Inscrivez-vous</h2>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class='signup-field'>
+                {% for field in form %}
+                    <p>{{ field }}</p>
+                {% endfor %}
+            </div>
+
+            <div class='signup-submit'>
+                <a href="{% url 'login' %}"><button class='btn signup-submit-btn' type='button'>Retourner</button></a>
+                <input class='btn signup-submit-btn' type="submit" value="S'inscrire">
+            </div>
+
+        </form>
+
+        {% if form.errors %}
+            <div>
+                {{ form.errors }}
+            </div>
+        {% endif %}
+
+    </section>
+
+{% endblock %}

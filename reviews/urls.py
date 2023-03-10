@@ -3,7 +3,7 @@ from django.contrib.auth.views import LoginView
 
 from reviews import views
 
-app_name = 'reviews'
+# app_name = 'reviews'
 urlpatterns = [
-    path('', views.flux, name='flux'),
+    path('', views.reviews, name='reviews'),
 ]
