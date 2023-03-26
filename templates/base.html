@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            {% block title %}LITReview{% endblock title %}
+        </title>
+    </head>
+
+    <body>
+        <div class="sidebar">
+            <h1>LITReview</h1>
+            {% if user.is_authenticated %}
+                <p><a href="{% url 'home' %}">Flux</a></p>
+                <p><a href="">Posts</a></p>
+                <p><a href="{% url 'ticket_upload' %}">Créer un ticket</a></p>
+                <p><a href="{% url 'logout' %}">Se déconnecter</a></p>
+            {% endif %}
+        </div>
+        <div class="main">
+            {% block content %}{% endblock content %}
+        </div>
+    </body>
+</html>

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Créer un post</h2>
+    <form method="post" enctype="multipart/form-data">
+        {{ edit_form.as_p }}
+        {{ delete_form.as_p }}
+        <button type="submit">Publier</button>
+    </form>
+{% endblock content %}

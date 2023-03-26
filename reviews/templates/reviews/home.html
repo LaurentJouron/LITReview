@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Flux{% endblock title %}
+{% block content %}
+    <a href=""><button type='button'>Demander une critique</button></a>
+    <a href=""><button type='button'>Créer une critique</button></a>
+    <div class="grid-container">
+        {% for ticket in tickets %}
+            <div class="post">
+                <title>{{ ticket.title }}</title>
+                <img src="{{ ticket.image.url }}">
+                <p>{{ ticket.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <h2>Reviews</h2>
+    <div class="grid-container">
+        {% for review in reviews %}
+            <div class="post">
+                <a href="{% url 'view_ticket' ticket_id %}">
+                    <h4>Ticket: {{ ticket.title }}</h4>
+                    <img src="{{ ticket.image.url }}">
+                    <p>{{ ticket.description }}</p>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

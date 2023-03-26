@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'reviews/style.css' %}">
+
+{% block title %}{{ ticket.title }}{% endblock title %}
+{% block content %}
+    <h2>{{ ticket.title }}</h2>
+    <img src="{{ ticket.image.url }}" alt="">
+    <p>{{ ticket.description }}</p>
+{% endblock content %}

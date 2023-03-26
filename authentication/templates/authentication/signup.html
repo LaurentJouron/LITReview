@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'authentication/style.css' %}">
+{% block title %}Formulaire d'inscription{% endblock title %}
+{% block content %}
+    <h2>Inscrivez-vous</h2>
+    {% if form.errors %}
+        {{ form.errors }}
+    {% endif %}
+    <form method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <a href="{% url 'login' %}"><button type='button'>Retourner</button></a>
+        <button type="submit" >S’inscrire</button>
+    </form>
+{% endblock content %}
