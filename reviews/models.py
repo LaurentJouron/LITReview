@@ -8,12 +8,26 @@ from authentication.models import User
 
 class Ticket(models.Model):
     IMAGE_MAX_SIZE = (300, 300)
+
     title = models.CharField(max_length=128, blank=False)
     description = models.TextField(max_length=2048, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     image = models.ImageField(null=True, blank=True)
     time_created = models.DateTimeField(auto_now_add=True)
     has_review = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'{self.title}'
+
+    def resize_image(self):
+        image = Image.open(self.image)
+        image.thumbnail(self.IMAGE_MAX_SIZE)
+        image.save(self.image.path)
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        if self.image is None:
+            self.resize_image()
 
 
 class Review(models.Model):
