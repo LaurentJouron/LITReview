@@ -4,6 +4,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from PIL import Image
 
+import authentication
+
 from .forms import TicketForm
 from .models import Ticket, Review
 
@@ -21,7 +23,7 @@ def ticket_upload(request):
         form = TicketForm(request.POST, request.FILES)
         if form.is_valid():
             ticket = form.save(commit=False)
-            ticket.uploader = request.user
+            ticket.user_id = request.user.id
             ticket.save()
             return redirect(settings.LOGIN_REDIRECT_URL)
     return render(
