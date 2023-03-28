@@ -10,19 +10,16 @@
     </head>
 
     <body>
-        <div class="sidebar">
-            <h1>LITReview</h1>
+        <h1>LITReview</h1>
+        {% block content %}{% endblock content %}
             {% if user.is_authenticated %}
                 <p><a href="{% url 'home' %}">Flux</a></p>
                 <p><a href="">Posts</a></p>
                 <p><a href="{% url 'ticket_upload' %}">Créer un ticket</a></p>
-                <p><a href="{% url 'logout' %}">Se déconnecter</a></p>
+
                 
+                <p><a href="{% url 'logout' %}">Se déconnecter</a></p>
+                <p>Voulez-vous <a href="{% url 'password_change' %}">changer le mot de passe ?</a></p>
             {% endif %}
-            <p><a href="{% url 'password_change' %}">Changer le mot de passe</a></p>
-        </div>
-        <div class="main">
-            {% block content %}{% endblock content %}
-        </div>
     </body>
 </html>
