@@ -12,13 +12,18 @@
     <body>
         <h1>LITReview</h1>
         {% if user.is_authenticated %}
-            <p><a href="{% url 'home' %}">Flux</a></p>
-            <p><a href="">Posts</a></p>
-            <p><a href="{% url 'ticket_upload' %}">Créer un ticket</a></p>
-            <p><a href="{% url 'logout' %}">Se déconnecter</a></p>
+        <p><a href="{% url 'home' %}">Flux</a></p>
+        <p><a href="">Posts</a></p>
+        <p><a href="{% url 'ticket_upload' %}">Créer un ticket</a></p>
+        <p><a href="{% url 'logout' %}">Se déconnecter</a></p>
+        {% endif %}
 
-            {% block content %}{% endblock content %}
-            <p>Voulez-vous <a href="{% url 'password_change' %}">changer le mot de passe ?</a></p>
+        {% block content %}{% endblock content %}
+        
+        {% if user.is_authenticated %}
+            <footer>
+                <p>Laurent Jouron - Copyright 2022 &copy; - All rights reserved. <a href="{% url 'password_change' %}"> Changer le mot de passe</a></p>
+            </footer>
         {% endif %}
     </body>
 </html>

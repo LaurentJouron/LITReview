@@ -42,7 +42,11 @@ urlpatterns = [
     ),
     # Blog
     path("home/", reviews.views.home, name='home'),
-    path('ticket/upload/', reviews.views.ticket_upload, name='ticket_upload'),
+    path(
+        'ticket/upload/',
+        reviews.views.ticket_upload,
+        name='ticket_upload',
+    ),
     path(
         'ticket/<int:ticket_id>', reviews.views.view_ticket, name='view_ticket'
     ),

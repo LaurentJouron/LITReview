@@ -3,26 +3,14 @@
 {% block content %}
     <a href=""><button type='button'>Demander une critique</button></a>
     <a href=""><button type='button'>Créer une critique</button></a>
-    <h2>Tickets</h2>
 
     <div class="grid-container">
         {% for ticket in tickets %}
             <div class="post">
-                <title>{{ ticket.title }}</title>
+                <h2>{{ ticket.title }}</h2>
+                <p>{{ ticket.time_created }}</p>
                 <img src="{{ ticket.image.url }}">
                 <p>{{ ticket.description }}</p>
-            </div>
-        {% endfor %}
-    </div>
-    
-    <div class="grid-container">
-        {% for review in reviews %}
-            <div class="post">
-                <a href="{% url 'view_ticket' ticket_id %}">
-                    <h4>Ticket: {{ ticket.title }}</h4>
-                    <img src="{{ ticket.image.url }}">
-                    <p>{{ ticket.description }}</p>
-                </a>
             </div>
         {% endfor %}
     </div>
