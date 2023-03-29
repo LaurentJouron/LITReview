@@ -11,15 +11,14 @@
 
     <body>
         <h1>LITReview</h1>
-        {% block content %}{% endblock content %}
-            {% if user.is_authenticated %}
-                <p><a href="{% url 'home' %}">Flux</a></p>
-                <p><a href="">Posts</a></p>
-                <p><a href="{% url 'ticket_upload' %}">Créer un ticket</a></p>
+        {% if user.is_authenticated %}
+            <p><a href="{% url 'home' %}">Flux</a></p>
+            <p><a href="">Posts</a></p>
+            <p><a href="{% url 'ticket_upload' %}">Créer un ticket</a></p>
+            <p><a href="{% url 'logout' %}">Se déconnecter</a></p>
 
-                
-                <p><a href="{% url 'logout' %}">Se déconnecter</a></p>
-                <p>Voulez-vous <a href="{% url 'password_change' %}">changer le mot de passe ?</a></p>
-            {% endif %}
+            {% block content %}{% endblock content %}
+            <p>Voulez-vous <a href="{% url 'password_change' %}">changer le mot de passe ?</a></p>
+        {% endif %}
     </body>
 </html>
