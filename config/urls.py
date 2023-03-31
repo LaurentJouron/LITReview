@@ -44,11 +44,16 @@ urlpatterns = [
     path("home/", reviews.views.home, name='home'),
     path(
         'ticket/upload/',
-        reviews.views.ticket_upload,
+        reviews.views.ticket_and_reviews_upload,
         name='ticket_upload',
     ),
     path(
         'ticket/<int:ticket_id>', reviews.views.view_ticket, name='view_ticket'
+    ),
+    path(
+        'review/create/',
+        reviews.views.ticket_and_reviews_upload,
+        name='reviews_create',
     ),
 ]
 

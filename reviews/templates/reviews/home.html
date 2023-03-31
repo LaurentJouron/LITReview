@@ -2,15 +2,17 @@
 {% block title %}Flux{% endblock title %}
 {% block content %}
     <a href=""><button type='button'>Demander une critique</button></a>
-    <a href=""><button type='button'>Créer une critique</button></a>
+    <a href="{% url 'reviews_create' %}"><button type='button'>Créer une critique</button></a>
 
     <div class="grid-container">
         {% for ticket in tickets %}
             <div class="post">
-                <h2>{{ ticket.title }}</h2>
-                <p>{{ ticket.time_created }}</p>
-                <img src="{{ ticket.image.url }}">
-                <p>{{ ticket.description }}</p>
+                <a href="{% url 'view_ticket' ticket.id %}">
+                    <h2>{{ ticket.title }}</h2>
+                </a>
+                    <p>{{ ticket.time_created }}</p>
+                    <img src="{{ ticket.image.url }}">
+                    <p>{{ ticket.description }}</p>
             </div>
         {% endfor %}
     </div>
