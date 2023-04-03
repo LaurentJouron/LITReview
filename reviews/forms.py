@@ -14,13 +14,6 @@ class TicketForm(forms.ModelForm):
             'description': 'Description',
             'image': 'Image',
         }
-        widgets = {
-            'description': forms.Textarea(
-                attrs={
-                    'class': 'textbox form-textarea form-textarea-description',
-                }
-            ),
-        }
 
 
 class ReviewForm(forms.ModelForm):
@@ -39,9 +32,16 @@ class ReviewForm(forms.ModelForm):
                     (5, '- 5'),
                 ]
             ),
-            'body': forms.Textarea(
-                attrs={
-                    'class': 'textbox form-textarea form-textarea-description',
-                }
-            ),
         }
+
+
+class BlogForm(forms.ModelForm):
+    edit_ticket = forms.BooleanField(widget=forms.HiddenInput, initial=True)
+
+    class Meta:
+        model = models.Ticket
+        fields = ['title', 'image']
+
+
+class DeleteTicketForm(forms.Form):
+    delete_ticket = forms.BooleanField(widget=forms.HiddenInput, initial=True)

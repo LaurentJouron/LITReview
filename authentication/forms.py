@@ -7,16 +7,13 @@ class LoginForm(forms.Form):
     username = forms.CharField(
         max_length=63,
         label=False,
-        widget=forms.TextInput(
-            attrs={'class': 'textbox login__textarea', 'placeholder': 'Pseudo'}
-        ),
+        widget=forms.TextInput(attrs={'placeholder': 'Pseudo'}),
     )
     password = forms.CharField(
         max_length=63,
         label=False,
         widget=forms.PasswordInput(
             attrs={
-                'class': 'textbox login__textarea',
                 'placeholder': 'Mot de passe',
             }
         ),
@@ -28,7 +25,6 @@ class SignupForm(UserCreationForm):
         label=False,
         widget=forms.PasswordInput(
             attrs={
-                'class': 'textbox signup-textarea',
                 'placeholder': "Mot de passe",
             }
         ),
@@ -38,7 +34,6 @@ class SignupForm(UserCreationForm):
         label=False,
         widget=forms.PasswordInput(
             attrs={
-                'class': 'textbox signup-textarea',
                 'placeholder': "Confirmer mot de passe",
             }
         ),
@@ -50,7 +45,6 @@ class SignupForm(UserCreationForm):
         widgets = {
             'username': forms.TextInput(
                 attrs={
-                    'class': 'textbox signup-textarea',
                     'placeholder': "Nom d'utilisateur",
                 }
             ),

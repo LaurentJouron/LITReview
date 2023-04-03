@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
-{% block title %}Créer un ticket{% endblock title %}
+{% block title %}Créer une critique (pas en réponse à un ticket){% endblock title %}
 {% block content %}
-    <h2>Créer un ticket</h2>
+    <h2>Créer un critique</h2>
     <form method="post" enctype="multipart/form-data">
+        <p>Livre / Article</p>
         {{ ticket_form.as_p }}
-        {% comment %} {{ review_form.as_p }} {% endcomment %}
+        <p>Critique</p>
+        {{ review_form.as_p }}
         {% csrf_token %}
         <button type="submit">Envoyer</button>
     </form>
