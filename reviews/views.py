@@ -1,14 +1,15 @@
-from multiprocessing import context
+from PIL import Image
+
+from django.forms import formset_factory
 from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.decorators import login_required
-from PIL import Image
-from django.urls import is_valid_path
+from django.contrib.auth.decorators import login_required, permission_required
 
 from .forms import DeleteTicketForm, TicketForm, ReviewForm, BlogForm
 from .models import Ticket, Review
 
 
+@permission_required('reviews.add_ticket', raise_exception=True)
 @login_required
 def ticket_upload(request):
     ticket_form = TicketForm()
@@ -56,6 +57,26 @@ def create_ticket_and_review(request):
 
 
 @login_required
+def create_multiple_ticket(request):
+    TicketFormset = formset_factory(TicketForm, extra=3)
+    formset = TicketFormset()
+    if request.method == 'POST':
+        formset = TicketFormset(request.POST, request.FILES)
+        if formset.is_valid():
+            for form in formset:
+                if form.cleaned_data:
+                    ticket = form.save(commit=False)
+                    ticket.uploader = request.user.id
+                    ticket.save()
+            return redirect(settings.LOGIN_REDIRECT_URL)
+    return render(
+        request,
+        'reviews/create_multiple_tickets.html',
+        {'formset': formset},
+    )
+
+
+@login_required
 def view_ticket(request, ticket_id):
     ticket = get_object_or_404(Ticket, id=ticket_id)
     return render(request, 'reviews/view_ticket.html', {'ticket': ticket})
@@ -81,7 +102,7 @@ def edit_ticket(request, ticket_id):
         'edit_ticket': edit_ticket,
         'delete_ticket': delete_ticket,
     }
-    return render(request, 'ticket/edit_ticket.html', context=context)
+    return render(request, 'reviews/edit_ticket.html', context=context)
 
 
 @login_required

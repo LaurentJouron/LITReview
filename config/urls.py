@@ -60,6 +60,11 @@ urlpatterns = [
         reviews.views.edit_ticket,
         name='edit_ticket',
     ),
+    path(
+        'ticket/upload_multiple/',
+        reviews.views.create_multiple_ticket,
+        name='create_multiple_tickets',
+    ),
 ]
 
 if settings.DEBUG:

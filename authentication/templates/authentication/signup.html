@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'authentication/style.css' %}">
+
 {% block title %}Formulaire d'inscription{% endblock title %}
+
 {% block content %}
     <h2>Inscrivez-vous</h2>
     {% if form.errors %}
