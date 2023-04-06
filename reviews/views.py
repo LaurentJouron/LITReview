@@ -1,11 +1,14 @@
+import imp
 from PIL import Image
 
 from django.forms import formset_factory
 from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required, permission_required
+from django.db.models import Q
 
-from .forms import DeleteTicketForm, TicketForm, ReviewForm, BlogForm
+from .forms import DeleteTicketForm, TicketForm, ReviewForm, EditForm
+from authentication.models import User, UserFollows
 from .models import Ticket, Review
 
 
@@ -15,7 +18,7 @@ def ticket_upload(request):
     ticket_form = TicketForm()
     if request.method == 'POST':
         ticket_form = TicketForm(request.POST, request.FILES)
-        if all(ticket_form.is_valid()):
+        if ticket_form.is_valid():
             ticket = ticket_form.save(commit=False)
             ticket.user_id = request.user.id
             ticket.save()
@@ -85,11 +88,11 @@ def view_ticket(request, ticket_id):
 @login_required
 def edit_ticket(request, ticket_id):
     ticket = get_object_or_404(Ticket, id=ticket_id)
-    edit_ticket = BlogForm(instance=ticket)
+    edit_ticket = EditForm(instance=ticket)
     delete_ticket = DeleteTicketForm()
     if request.method == 'POST':
         if 'edit_ticket' in request.POST:
-            edit_ticket = BlogForm(request.POST, instance=ticket)
+            edit_ticket = EditForm(request.POST, instance=ticket)
             if edit_ticket.is_valid():
                 edit_ticket.save()
                 return redirect(settings.LOGIN_REDIRECT_URL)
@@ -109,6 +112,12 @@ def edit_ticket(request, ticket_id):
 def home(request):
     tickets = Ticket.objects.all()
     reviews = Review.objects.all()
+    # tickets = Ticket.objects.filter(
+    #     Q(contributors__in=request.UserFollows.all()) | Q(starred=True)
+    # )
+    # reviews = Review.objects.filter(
+    #     uploader__in=request.UserFollows.all()
+    # ).exclude(review__in=reviews)
     return render(
         request,
         'reviews/home.html',

@@ -1,6 +1,4 @@
-from dataclasses import field
 from django import forms
-from django.forms.widgets import RadioSelect
 
 from . import models
 
@@ -35,7 +33,7 @@ class ReviewForm(forms.ModelForm):
         }
 
 
-class BlogForm(forms.ModelForm):
+class EditForm(forms.ModelForm):
     edit_ticket = forms.BooleanField(widget=forms.HiddenInput, initial=True)
 
     class Meta:

@@ -4,9 +4,10 @@
 
 {% block title %}{{ ticket.title }}{% endblock title %}
 {% block content %}
-    <p><a href="{% url 'edit_ticket' ticket.id %}">Modifier le ticket</a></p>
     <h2>{{ ticket.title }}</h2>
     <p>{{ ticket.user}} {{ ticket.time_created }}</p>
     <img src="{{ ticket.image.url }}">
     <p>{{ ticket.description }}</p>
+    <a href="{% url 'edit_ticket' ticket.id %}"><button type='button'>Modifier le ticket</button></a>
+    <a href="{% url 'home' %}"><button type='button'>Retourner</button></a>
 {% endblock content %}
