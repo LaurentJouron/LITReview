@@ -1,15 +1,13 @@
-import imp
-from PIL import Image
-
 from django.forms import formset_factory
 from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required, permission_required
 from django.db.models import Q
+from PIL import Image
 
+from .models import Ticket, Review
 from .forms import DeleteTicketForm, TicketForm, ReviewForm, EditForm
 from authentication.models import User, UserFollows
-from .models import Ticket, Review
 
 
 @permission_required('reviews.add_ticket', raise_exception=True)
@@ -112,12 +110,6 @@ def edit_ticket(request, ticket_id):
 def home(request):
     tickets = Ticket.objects.all()
     reviews = Review.objects.all()
-    # tickets = Ticket.objects.filter(
-    #     Q(contributors__in=request.UserFollows.all()) | Q(starred=True)
-    # )
-    # reviews = Review.objects.filter(
-    #     uploader__in=request.UserFollows.all()
-    # ).exclude(review__in=reviews)
     return render(
         request,
         'reviews/home.html',
@@ -126,3 +118,17 @@ def home(request):
             'reviews': reviews,
         },
     )
+
+    # @login_required
+    # def home(request):
+    # tickets = Ticket.objects.filter(
+    #     Q(contributors__in=request.UserFollows.all()) | Q(starred=True)
+    # )
+    # reviews = Review.objects.filter(
+    #     uploader__in=request.UserFollows.all()
+    # ).exclude(review__in=reviews)
+    # context = {
+    #     'tickets': tickets,
+    #     'reviews': reviews,
+    # }
+    # return render(request, 'reviews/home.html', context=context)
