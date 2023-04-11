@@ -13,6 +13,13 @@ from authentication.models import User, UserFollows
 @permission_required('reviews.add_ticket', raise_exception=True)
 @login_required
 def ticket_upload(request):
+    """
+    This function gives the possibility to create a ticket, provided
+    that it is authenticated and entitled to do so. It records the ID
+    of the ticket creator. The function uses the creation of the TicketForm
+    form of the forms.py file and ticket_update.html of templates/reviews.
+    Once the ticket is created, the user is returning the home page.
+    """
     ticket_form = TicketForm()
     if request.method == 'POST':
         ticket_form = TicketForm(request.POST, request.FILES)
@@ -32,7 +39,43 @@ def ticket_upload(request):
 
 
 @login_required
+def home(request):
+    """
+    This function displays all tickets and comments, provided
+    they are authenticated. home.html of templates/reviews.
+    """
+    tickets = Ticket.objects.all()
+    reviews = Review.objects.all()
+    return render(
+        request,
+        'reviews/home.html',
+        context={
+            'tickets': tickets,
+            'reviews': reviews,
+        },
+    )
+
+    # @login_required
+    # def home(request):
+    # tickets = Ticket.objects.filter(
+    #     Q(contributors__in=request.UserFollows.all()) | Q(starred=True)
+    # )
+    # reviews = Review.objects.filter(
+    #     uploader__in=request.UserFollows.all()
+    # ).exclude(review__in=reviews)
+    # context = {
+    #     'tickets': tickets,
+    #     'reviews': reviews,
+    # }
+    # return render(request, 'reviews/home.html', context=context)
+
+
+@login_required
 def create_ticket_and_review(request):
+    """
+    This function gives the possibility to create a ticket,
+    a comment while evaluating the book.
+    """
     ticket_form = TicketForm()
     review_form = ReviewForm()
     if request.method == 'POST':
@@ -43,7 +86,9 @@ def create_ticket_and_review(request):
             ticket.user_id = request.user.id
             ticket.save()
             review = review_form.save(commit=False)
+            review.ticket = ticket
             review.user_id = request.user.id
+            review.ticket.has_review = True
             review.save()
             return redirect(settings.LOGIN_REDIRECT_URL)
     context = {
@@ -54,26 +99,6 @@ def create_ticket_and_review(request):
         request,
         'reviews/create_ticket_and_review.html',
         context=context,
-    )
-
-
-@login_required
-def create_multiple_ticket(request):
-    TicketFormset = formset_factory(TicketForm, extra=3)
-    formset = TicketFormset()
-    if request.method == 'POST':
-        formset = TicketFormset(request.POST, request.FILES)
-        if formset.is_valid():
-            for form in formset:
-                if form.cleaned_data:
-                    ticket = form.save(commit=False)
-                    ticket.uploader = request.user.id
-                    ticket.save()
-            return redirect(settings.LOGIN_REDIRECT_URL)
-    return render(
-        request,
-        'reviews/create_multiple_tickets.html',
-        {'formset': formset},
     )
 
 
@@ -104,31 +129,3 @@ def edit_ticket(request, ticket_id):
         'delete_ticket': delete_ticket,
     }
     return render(request, 'reviews/edit_ticket.html', context=context)
-
-
-@login_required
-def home(request):
-    tickets = Ticket.objects.all()
-    reviews = Review.objects.all()
-    return render(
-        request,
-        'reviews/home.html',
-        context={
-            'tickets': tickets,
-            'reviews': reviews,
-        },
-    )
-
-    # @login_required
-    # def home(request):
-    # tickets = Ticket.objects.filter(
-    #     Q(contributors__in=request.UserFollows.all()) | Q(starred=True)
-    # )
-    # reviews = Review.objects.filter(
-    #     uploader__in=request.UserFollows.all()
-    # ).exclude(review__in=reviews)
-    # context = {
-    #     'tickets': tickets,
-    #     'reviews': reviews,
-    # }
-    # return render(request, 'reviews/home.html', context=context)

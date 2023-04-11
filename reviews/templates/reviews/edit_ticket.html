@@ -9,7 +9,7 @@
     </form>
     <hr>
     <form method="post">
-        {{ delete_form }}
+        {{ delete_form.as_p }}
         {% csrf_token %}
         <button type="submit" >Supprimer</button>
     </form>

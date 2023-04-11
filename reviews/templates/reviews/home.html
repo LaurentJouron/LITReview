@@ -7,12 +7,11 @@
     <div class="grid-container">
         {% for ticket in tickets %}
             <div class="post">
+                <p>Ticket créer par: {{ ticket.user}} le {{ ticket.time_created }}</p>
                 <a href="{% url 'view_ticket' ticket.id %}">
                     <h2>{{ ticket.title }}</h2>
                 </a>
-                    <p>Ce ticket a été créer par {{ ticket.user}} le {{ ticket.time_created }}</p>
-                    <img src="{{ ticket.image.url }}">
-                    <p>{{ ticket.description }}</p>
+                <img src="{{ ticket.image.url }}">
             </div>
         {% endfor %}
     </div>
