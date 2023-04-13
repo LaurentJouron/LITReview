@@ -55,20 +55,6 @@ def home(request):
         },
     )
 
-    # @login_required
-    # def home(request):
-    # tickets = Ticket.objects.filter(
-    #     Q(contributors__in=request.UserFollows.all()) | Q(starred=True)
-    # )
-    # reviews = Review.objects.filter(
-    #     uploader__in=request.UserFollows.all()
-    # ).exclude(review__in=reviews)
-    # context = {
-    #     'tickets': tickets,
-    #     'reviews': reviews,
-    # }
-    # return render(request, 'reviews/home.html', context=context)
-
 
 @login_required
 def create_ticket_and_review(request):

@@ -13,12 +13,12 @@
         <h1>LITReview</h1>
         {% if user.is_authenticated %}
             <p><a href="{% url 'home' %}">Flux</a></p>
-            {% if perms.reviews.add_ticket %}
-                <p><a href="{% url 'ticket_upload' %}">Posts</a></p>
-            {% endif %}
-            <p><a href="">Abonnements</a></p>
+                {% if perms.reviews.add_ticket %}
+                    <p><a href="{% url 'ticket_upload' %}">Posts</a></p>
+                {% endif perms.reviews.add_ticket %}
+                <p><a href="{% url 'subscriptions' %}">Abonnements</a></p>
             <p><a href="{% url 'logout' %}">Se déconnecter</a></p>
-        {% endif %}
+        {% endif user.is_authenticated %}
 
         {% block content %}{% endblock content %}
         

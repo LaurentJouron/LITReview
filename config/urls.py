@@ -1,3 +1,4 @@
+from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
@@ -7,7 +8,7 @@ from django.contrib.auth.views import (
     PasswordChangeView,
     PasswordChangeDoneView,
 )
-from django.urls import path
+from django.contrib.auth.decorators import login_required
 
 import authentication.views
 import reviews.views
@@ -59,6 +60,17 @@ urlpatterns = [
         'ticket/<int:ticket_id>/edit',
         reviews.views.edit_ticket,
         name='edit_ticket',
+    ),
+    # Follower
+    path(
+        '',
+        login_required(authentication.views.SubscriptionPage.as_view()),
+        name='subscriptions',
+    ),
+    path(
+        '<int:sub_id>/unsubscribe',
+        login_required(authentication.views.Unsubscribe.as_view()),
+        name='unsubscribe',
     ),
 ]
 

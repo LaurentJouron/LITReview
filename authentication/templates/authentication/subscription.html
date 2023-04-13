@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section>
+        <h2>Suivre d'autres utilisateurs</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form }} 
+            <input type="submit" value="Suivre">
+        </form>
+    </section>
+
+    <section>
+        <h2>Abonnements</h2>
+        <ul>
+            {% for sub in subscriptions %}
+                {% if not forloop.first %}
+                    <hr>
+                {% endif %}
+                <li>
+                    {{ sub.followed_user }}
+                    <a href="{% url 'unsubscribe' sub.id %}"><button type='button'>Désabonner</button></a>
+                </li>
+            {% empty %}
+                <p>Aucun abonnement</p>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section>
+        <h2>Abonnés</h2>
+        <ul>
+            {% for user in subscribers %}
+                {% if not forloop.first %}
+                    <hr>
+                {% endif %}
+                <li>{{ user }}</li>
+            {% empty %}
+                <p>Aucun abonné</p>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}

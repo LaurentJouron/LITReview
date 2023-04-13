@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content%}
+    <section>
+        <h2 class='title'>Arrêter de suivre {{ followed_user }} ?</h2>
+        <form action="" method="post" enctype='multipart/form-data'>
+            {% csrf_token %}
+            <a href="{% url 'posts' %}"><button type='button'>Retour</button></a>
+            <input type="submit" value="Ne plus suivre">
+        </form>
+    </section>
+{% endblock %}
