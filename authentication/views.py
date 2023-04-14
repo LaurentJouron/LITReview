@@ -8,6 +8,18 @@ from authentication.forms import LoginForm, SignupForm, SubscriptionForm
 from authentication.models import UserFollows
 
 
+def signup_page(request):
+    form = SignupForm()
+    if request.method == 'POST':
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect(settings.LOGIN_REDIRECT_URL)
+    context = {'form': form}
+    return render(request, 'authentication/signup.html', context=context)
+
+
 class LoginPage(View):
     form_class = LoginForm
     template_name = 'authentication/login.html'
@@ -15,10 +27,11 @@ class LoginPage(View):
     def get(self, request):
         form = self.form_class()
         message = ''
+        context = {'form': form, 'message': message}
         return render(
             request,
             self.template_name,
-            context={'form': form, 'message': message},
+            context=context,
         )
 
     def post(self, request):
@@ -35,24 +48,12 @@ class LoginPage(View):
                     return redirect(settings.LOGIN_REDIRECT_URL)
                 else:
                     message = 'Identifiants incorrects.'
+            context = {'form': form, 'message': message}
             return render(
                 request,
                 self.template_name,
-                context={'form': form, 'message': message},
+                context=context,
             )
-
-
-def signup_page(request):
-    form = SignupForm()
-    if request.method == 'POST':
-        form = SignupForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect(settings.LOGIN_REDIRECT_URL)
-    return render(
-        request, 'authentication/signup.html', context={'form': form}
-    )
 
 
 def logout_user(request):
@@ -74,15 +75,16 @@ class SubscriptionPage(View):
             if subscription.followed_user == current_user:
                 subscribers.append(subscription)
 
+        context = {
+            'form': form,
+            'current_user': current_user,
+            'subscriptions': subscriptions,
+            'subscribers': subscribers,
+        }
         return render(
             request,
             self.template_name,
-            {
-                'form': form,
-                'current_user': current_user,
-                'subscriptions': subscriptions,
-                'subscribers': subscribers,
-            },
+            context=context,
         )
 
     def post(self, request):
@@ -97,8 +99,12 @@ class SubscriptionPage(View):
                         user=request.user, followed_user=user_to_follow
                     )
             return redirect('subscriptions')
-
-        return render(request, self.template_name, {'form': form})
+        context = {'form': form}
+        return render(
+            request,
+            self.template_name,
+            context=context,
+        )
 
 
 class Unsubscribe(View):
@@ -107,10 +113,11 @@ class Unsubscribe(View):
     def get(self, request, sub_id=None):
         subscription = UserFollows.objects.get(id=sub_id)
         if subscription.user == request.user:
+            context = {'followed_user': subscription.followed_user}
             return render(
                 request,
                 self.template_name,
-                {'followed_user': subscription.followed_user},
+                context=context,
             )
 
     def post(self, request, sub_id=None):

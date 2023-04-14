@@ -9,8 +9,9 @@ from django.contrib.auth.views import (
     PasswordChangeDoneView,
 )
 from django.contrib.auth.decorators import login_required
-
+from reviews.views import DeleteTicket, PostTicket, DeleteTicket
 import authentication.views
+
 import reviews.views
 
 urlpatterns = [
@@ -61,6 +62,12 @@ urlpatterns = [
         reviews.views.edit_ticket,
         name='edit_ticket',
     ),
+    path(
+        'ticket/<int:ticket_id>/delete/',
+        login_required(DeleteTicket.as_view()),
+        name='delete_ticket',
+    ),
+    path('posts/', login_required(PostTicket.as_view()), name='posts'),
     # Follower
     path(
         'subscriptions',

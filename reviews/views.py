@@ -1,16 +1,19 @@
-from django.forms import formset_factory
-from django.conf import settings
-from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.decorators import login_required, permission_required
-from django.db.models import Q
+from multiprocessing.dummy import Value
+from itertools import chain
 from PIL import Image
+from django.forms import CharField
+from django.conf import settings
+from django.views.generic import View
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
-from .models import Ticket, Review
-from .forms import DeleteTicketForm, TicketForm, ReviewForm, EditForm
-from authentication.models import User, UserFollows
+from reviews.models import Ticket, Review
+from reviews.forms import DeleteTicketForm, TicketForm, ReviewForm, EditForm
+
+# from authentication.models import User, UserFollows
 
 
-@permission_required('reviews.add_ticket', raise_exception=True)
 @login_required
 def ticket_upload(request):
     """
@@ -46,13 +49,14 @@ def home(request):
     """
     tickets = Ticket.objects.all()
     reviews = Review.objects.all()
+    context = {
+        'tickets': tickets,
+        'reviews': reviews,
+    }
     return render(
         request,
         'reviews/home.html',
-        context={
-            'tickets': tickets,
-            'reviews': reviews,
-        },
+        context=context,
     )
 
 
@@ -91,7 +95,8 @@ def create_ticket_and_review(request):
 @login_required
 def view_ticket(request, ticket_id):
     ticket = get_object_or_404(Ticket, id=ticket_id)
-    return render(request, 'reviews/view_ticket.html', {'ticket': ticket})
+    context = {'ticket': ticket}
+    return render(request, 'reviews/view_ticket.html', context=context)
 
 
 @login_required
@@ -115,3 +120,35 @@ def edit_ticket(request, ticket_id):
         'delete_ticket': delete_ticket,
     }
     return render(request, 'reviews/edit_ticket.html', context=context)
+
+
+class DeleteTicket(View):
+    template_name: str = 'reviews/delete.html'
+
+    def get(self, request, ticket_id=None):
+        ticket = Ticket.objects.get(id=ticket_id)
+        if ticket.user == request.user:
+            context = {'ticket': ticket, 'content_type': 'TICKET'}
+            return render(
+                request,
+                self.template_name,
+                context=context,
+            )
+
+    def post(self, request, ticket_id=None):
+        ticket = Ticket.objects.get(id=ticket_id)
+        if ticket.user == request.user:
+            ticket.delete()
+            return redirect('posts')
+
+
+class PostTicket(View):
+    template_name = 'reviews/post_ticket.html'
+
+    def get(self, request):
+        ticket = Ticket.objects.filter(user=request.user)
+        review = Review.objects.filter(user=request.user)
+        posts = chain(ticket, review)
+        posts = sorted(posts, key=lambda post: post.time_created, reverse=True)
+        context = {'posts': posts}
+        return render(request, self.template_name, context=context)

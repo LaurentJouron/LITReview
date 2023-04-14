@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content%}
+    <section>
+
+        <h2>Supprimer votre demande</h2>
+        {% include 'reviews/edit_ticket.html' %}
+        <h2>Supprimer votre critique</h2>
+        {% include 'reviews/edit_ticket.html' with ticket=review.ticket %}
+
+        <form action="" method="post" enctype='multipart/form-data'>
+            {% csrf_token %}
+            <a href="{% url 'posts' %}"><button class='btn signup-submit-btn' type='button'>Retour</button></a>
+            <input class='btn signup-submit-btn' type="submit" value="Supprimer">
+        </form>
+    </section>
+{% endblock %}

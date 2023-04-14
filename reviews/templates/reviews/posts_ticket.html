@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content%}
+    <section>
+    <h2>Vos posts</h2>
+        {% for post in posts %}
+
+                {% include 'reviews/ticket_snippet.html' with ticket=post edit_ticket=True %}
+
+                {% include 'reviews/review_snippet.html' with review=post ticket=post.ticket edit_review=True %}
+
+        {% endfor %}
+    </section>
+{% endblock %}
