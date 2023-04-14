@@ -15,10 +15,10 @@
             <p><a href="{% url 'home' %}">Flux</a></p>
                 {% if perms.reviews.add_ticket %}
                     <p><a href="{% url 'ticket_upload' %}">Posts</a></p>
-                {% endif perms.reviews.add_ticket %}
+                {% endif %}
                 <p><a href="{% url 'subscriptions' %}">Abonnements</a></p>
             <p><a href="{% url 'logout' %}">Se déconnecter</a></p>
-        {% endif user.is_authenticated %}
+        {% endif %}
 
         {% block content %}{% endblock content %}
         

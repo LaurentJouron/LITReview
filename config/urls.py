@@ -63,7 +63,7 @@ urlpatterns = [
     ),
     # Follower
     path(
-        '',
+        'subscriptions',
         login_required(authentication.views.SubscriptionPage.as_view()),
         name='subscriptions',
     ),
