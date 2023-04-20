@@ -9,6 +9,10 @@ from authentication.models import UserFollows
 
 
 def signup_page(request):
+    """
+    This feature allows a user to register on their first login. It uses the
+    SignupForm class in the forms.py file and returns to the signup.html.
+    """
     form = SignupForm()
     if request.method == 'POST':
         form = SignupForm(request.POST)
@@ -57,6 +61,10 @@ class LoginPage(View):
 
 
 def logout_user(request):
+    """
+    This feature allows a user to log out and return to the authentication
+    home page.
+    """
     logout(request)
     return redirect(settings.LOGOUT_REDIRECT_URL)
 

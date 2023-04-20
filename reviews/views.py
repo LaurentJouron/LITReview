@@ -1,12 +1,14 @@
-from multiprocessing.dummy import Value
+# from multiprocessing.dummy import Value
 from itertools import chain
-from PIL import Image
-from django.forms import CharField
+
+# from PIL import Image
+# from django.forms import CharField
 from django.conf import settings
 from django.views.generic import View
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from django.db.models import Q
+
+# from django.db.models import Q
 
 from reviews.models import Ticket, Review
 from reviews.forms import DeleteTicketForm, TicketForm, ReviewForm, EditForm

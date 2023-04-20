@@ -1,17 +1,21 @@
 {% extends 'base.html' %}
-{% load static %}
-<link rel="stylesheet" href="{% static 'authentication/style.css' %}">
 
 {% block title %}Page d'accueil{% endblock title %}
 
 {% block content %}
-    <p>{{ message }}</p>
-    <h2>Inscrivez-vous maintenant</h2>
-    <a href="{% url 'signup' %}"><button type='button'>S'inscrire</button></a>
-    <h2>Connectez-vous</h2>
-    <form method="post">
-        {{ form.as_p }}
-        {% csrf_token %}
-        <button type="submit">Se connecter</button>
-    </form>
+    <section class="login">
+        <div class="login__signup">
+            <p>{{ message }}</p>
+            <h2>Inscrivez-vous maintenant</h2>
+            <a href="{% url 'signup' %}"><button class="btn login__signup_btn" type='button'>S'inscrire</button></a>
+        </div>
+        <div class="login__signin">
+            <h2>Connectez-vous</h2>
+            <form method="post">
+                {{ form.as_p }}
+                {% csrf_token %}
+                <button class="btn login__btn" type="submit">Se connecter</button>
+            </form>
+        </div>
+    </section>
 {% endblock content %}

@@ -28,7 +28,10 @@ class Migration(migrations.Migration):
                 ),
                 ("title", models.CharField(max_length=128)),
                 ("description", models.TextField(blank=True, max_length=2048)),
-                ("image", models.ImageField(blank=True, null=True, upload_to="")),
+                (
+                    "image",
+                    models.ImageField(blank=True, null=True, upload_to=""),
+                ),
                 ("time_created", models.DateTimeField(auto_now_add=True)),
                 ("has_review", models.BooleanField(default=False)),
                 (
@@ -67,7 +70,8 @@ class Migration(migrations.Migration):
                 (
                     "ticket",
                     models.ForeignKey(
-                        on_delete=django.db.models.deletion.CASCADE, to="reviews.ticket"
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="reviews.ticket",
                     ),
                 ),
                 (

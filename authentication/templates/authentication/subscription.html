@@ -1,12 +1,14 @@
 {% extends "base.html" %}
- {% block title %}Onglet d'abonnements{% endblock title %}
+
+{% block title %}Onglet d'abonnements{% endblock title %}
+
 {% block content %}
     <section>
         <h2>Suivre d'autres utilisateurs</h2>
         <form method="POST">
             {% csrf_token %}
             {{ form }} 
-            <input type="submit" value="Suivre">
+            <input type="submit" value="Envoyer">
         </form>
     </section>
 
