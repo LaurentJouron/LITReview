@@ -3,7 +3,7 @@
 {% block title %}Page d'accueil{% endblock title %}
 
 {% block content %}
-    <section class="flex-container">
+    <section class="login">
         <div class="signup">
             <p>{{ message }}</p>
             <h2>Inscrivez-vous maintenant</h2>
@@ -14,7 +14,9 @@
             <form method="post">
                 {{ form.as_p }}
                 {% csrf_token %}
-                <button class="btn signin__btn" type="submit">Se connecter</button>
+                <div class="login_btn">
+                    <button class="btn signin__btn" type="submit">Se connecter</button>
+                </div>
             </form>
         </div>
     </section>
