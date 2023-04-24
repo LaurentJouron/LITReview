@@ -3,18 +3,18 @@
 {% block title %}Page d'accueil{% endblock title %}
 
 {% block content %}
-    <section class="login">
-        <div class="login__signup">
+    <section class="flex-container">
+        <div class="signup">
             <p>{{ message }}</p>
             <h2>Inscrivez-vous maintenant</h2>
-            <a href="{% url 'signup' %}"><button class="btn login__signup_btn" type='button'>S'inscrire</button></a>
+            <a href="{% url 'signup' %}"><button class="btn signup_btn" type='button'>S'inscrire</button></a>
         </div>
-        <div class="login__signin">
+        <div class="signin">
             <h2>Connectez-vous</h2>
             <form method="post">
                 {{ form.as_p }}
                 {% csrf_token %}
-                <button class="btn login__btn" type="submit">Se connecter</button>
+                <button class="btn signin__btn" type="submit">Se connecter</button>
             </form>
         </div>
     </section>

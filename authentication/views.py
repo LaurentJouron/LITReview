@@ -8,7 +8,7 @@ from authentication.forms import LoginForm, SignupForm, SubscriptionForm
 from authentication.models import UserFollows
 
 
-def signup_page(request):
+def signup(request):
     """
     This feature allows a user to register on their first login. It uses the
     SignupForm class in the forms.py file and returns to the signup.html.

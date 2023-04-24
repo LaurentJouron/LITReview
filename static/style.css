@@ -8,67 +8,60 @@
 .title {
     height: 60px;
     width: auto;
-    padding-top: 20px;
+    margin-top: 20px;
 }
+
 .company_title {
     text-align: center;
     border-top: 2px solid;
     border-bottom: 2px solid;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 /* base.html - Barre de navigation du site, qui s'associe au titre si "user.authentifier". */
-/* .nav {
-    
-}
-
-.nav__bar {
-
-}
-
-.nav__bar__items {
-    text-decoration: none;
-} */
-
-
-/*  signup.html - Formulaire d'inscription. */
-/* .signup {
-
-}
-
-.signup__title {
-
-}
-
-.signup__submit {
-
-}
-
-.btn {
-
-}
-
-.signup_submit_btn {
-
-} */
 
 
 /* login.html - Page d'authentifiction */
-/* .login {
+.flex-container {
+   max-width: 900px;
+   margin: 0 auto;
+   height: 400px;
+   padding: 10px;
+   display: flex;
+   gap: 100px;
+   justify-content: center;
+   align-items: center;
+}
+
+.signup, .signin{
+    width: 600px;
+    height: 200px;
+    padding: 10px;
+}
+
+.signup, .signin h2{
+    text-align: center;
+}
+.signup {
+}
+
+.signin {
+    
+}
+
+.btn {
+    width: auto;
+    padding: 8px 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.signup_btn {
 
 }
 
-.login__singup {
+.signin__btn {
 
 }
-
-.login__signup_btn {
-
-}
-
-.login__signin {
-
-}
-
-.btn login__btn {
-
-} */

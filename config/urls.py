@@ -5,13 +5,11 @@ from django.contrib import admin
 from django.contrib.auth.views import (
     LoginView,
     LogoutView,
-    PasswordChangeView,
-    PasswordChangeDoneView,
 )
 from django.contrib.auth.decorators import login_required
-from reviews.views import DeleteTicket, PostTicket, DeleteTicket
-import authentication.views
 
+from reviews.views import DeleteTicket, PostTicket
+import authentication.views
 import reviews.views
 
 urlpatterns = [
@@ -27,21 +25,7 @@ urlpatterns = [
         name='login',
     ),
     path("logout", LogoutView.as_view(), name='logout'),
-    path('signup', authentication.views.signup_page, name='signup'),
-    path(
-        'change-password/',
-        PasswordChangeView.as_view(
-            template_name='authentication/password_change_form.html'
-        ),
-        name='password_change',
-    ),
-    path(
-        'change-password-done/',
-        PasswordChangeDoneView.as_view(
-            template_name='authentication/password_change_done.html'
-        ),
-        name='password_change_done',
-    ),
+    path('signup', authentication.views.signup, name='signup'),
     # Blog
     path("home/", reviews.views.home, name='home'),
     path(
