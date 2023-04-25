@@ -3,16 +3,18 @@
 {% block title %}Onglet d'abonnements{% endblock title %}
 
 {% block content %}
-    <section>
+    <section class="users_follows">
         <h2>Suivre d'autres utilisateurs</h2>
         <form method="POST">
             {% csrf_token %}
-            {{ form }} 
-            <input type="submit" value="Envoyer">
+            <div class="users_follows__add">
+                {{ form }}
+                <input class="btn" type="submit" value="Envoyer">
+            </div>
         </form>
     </section>
 
-    <section>
+    <section class="subscription">
         <h2>Abonnements</h2>
         <ul>
             {% for sub in subscriptions %}
@@ -21,7 +23,7 @@
                 {% endif %}
                 <li>
                     {{ sub.followed_user }}
-                    <a href="{% url 'unsubscribe' sub.id %}"><button type='button'>Désabonner</button></a>
+                    <a href="{% url 'unsubscribe' sub.id %}"><button class="btn subscription_btn" type='button'>Désabonner</button></a>
                 </li>
             {% empty %}
                 <p>Aucun abonnement</p>
@@ -29,7 +31,7 @@
         </ul>
     </section>
 
-    <section>
+    <section class="subscribers">
         <h2>Abonnés</h2>
         <ul>
             {% for user in subscribers %}

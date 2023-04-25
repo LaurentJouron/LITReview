@@ -14,15 +14,17 @@
 
     <body>
         <header>
-            <a href="#" class="title">LITReview</a>
-            {% if user.is_authenticated %}
-                <nav class="nav__bar">
-                    <a class="nav__bar__items" href="{% url 'home' %}">Flux</a>
-                    <a class="nav__bar__items" href="{% url 'ticket_upload' %}">Posts</a>
-                    <a class="nav__bar__items" href="{% url 'subscriptions' %}">Abonnements</a>
-                    <a class="nav__bar__items" href="{% url 'logout' %}">Se déconnecter</a>
-                </nav>
-            {% endif %}
+            {% comment %} /!\ The hidden class is not used, it is there just for css /!\ {% endcomment %}
+            <a href="#" class="nav__hidden"></a>
+            <a href="#" class="nav__title">LITReview</a>
+            <nav class="nav">
+                {% if user.is_authenticated %}
+                    <a class="nav_link" href="{% url 'home' %}">Flux</a>
+                    <a class="nav_link" href="{% url 'ticket_upload' %}">Posts</a>
+                    <a class="nav_link" href="{% url 'subscriptions' %}">Abonnements</a>
+                    <a class="nav_link" href="{% url 'logout' %}">Se déconnecter</a>
+                {% endif %}
+            </nav>
         </header>
 
         <main>

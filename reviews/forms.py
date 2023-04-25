@@ -1,3 +1,5 @@
+from tkinter import Widget
+from xml.dom.minidom import Attr
 from django import forms
 
 from . import models
@@ -7,11 +9,6 @@ class TicketForm(forms.ModelForm):
     class Meta:
         model = models.Ticket
         fields = ('title', 'description', 'image')
-        labels = {
-            'title': 'Titre',
-            'description': 'Description',
-            'image': 'Image',
-        }
 
 
 class ReviewForm(forms.ModelForm):
