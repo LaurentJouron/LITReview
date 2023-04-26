@@ -5,8 +5,10 @@
         <h2>Arrêter de suivre {{ followed_user }} ?</h2>
         <form action="" method="post" enctype='multipart/form-data'>
             {% csrf_token %}
-            <a href="{% url 'posts' %}"><button type='button'>Retour</button></a>
-            <input type="submit" value="Ne plus suivre">
+            <div class="btn unsubscribe_btn">
+                <a href="{% url 'posts' %}"><button type='button'>Retour</button></a>
+            </div>
+            <input class="unsubscribe_input" type="submit" value="Ne plus suivre">
         </form>
     </section>
 {% endblock %}

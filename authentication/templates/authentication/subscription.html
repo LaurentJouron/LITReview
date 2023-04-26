@@ -9,7 +9,7 @@
             {% csrf_token %}
             <div class="users_follows__add">
                 {{ form }}
-                <input class="btn" type="submit" value="Envoyer">
+                <input class="btn users_follows_btn" type="submit" value="Envoyer">
             </div>
         </form>
     </section>
@@ -17,13 +17,13 @@
     <section class="subscription">
         <h2>Abonnements</h2>
         <ul>
-            {% for sub in subscriptions %}
+            {% for subscription in subscriptions %}
                 {% if not forloop.first %}
                     <hr>
                 {% endif %}
                 <li>
-                    {{ sub.followed_user }}
-                    <a href="{% url 'unsubscribe' sub.id %}"><button class="btn subscription_btn" type='button'>Désabonner</button></a>
+                    {{ subscription.followed_user }}
+                    <a href="{% url 'unsubscribe' subscription.id %}"><button class="btn subscription_btn" type='button'>Désabonner</button></a>
                 </li>
             {% empty %}
                 <p>Aucun abonnement</p>

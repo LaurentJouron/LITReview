@@ -2,10 +2,11 @@ from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.views.generic import View
-from django.contrib.auth.models import User
+
+# from django.contrib.auth.models import User
 
 from authentication.forms import LoginForm, SignupForm, SubscriptionForm
-from authentication.models import UserFollows
+from authentication.models import UserFollows, User
 
 
 def signup(request):

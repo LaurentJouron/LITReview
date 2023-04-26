@@ -12,11 +12,16 @@
     <div class="flux">
         {% for ticket in tickets %}
             <div class="post">
-                <p>Ticket créer par: {{ ticket.user}} le {{ ticket.time_created }}</p>
-                <a href="{% url 'view_ticket' ticket.id %}">
-                    <h2>{{ ticket.title }}</h2>
-                </a>
-                <img src="{{ ticket.image.url }}">
+                <div class="date_time">
+                    <p>{{ ticket.time_created }}</p>
+                </div>
+                <div class="book">
+                    <p>Ticket - {{ ticket.user}}</p>
+                    <a class="book_link" href="{% url 'view_ticket' ticket.id %}">
+                        <h2>{{ ticket.title }}</h2>
+                    </a>
+                    <img src="{{ ticket.image.url }}">
+                </div>
             </div>
         {% endfor %}
     </div>

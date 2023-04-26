@@ -111,10 +111,9 @@ header a {
 }
 
 .signin input {
-    width: 300px;
+    width: 400px;
     height: 30px;
 }
-
 
 .login_btn {
     max-width: 900px;
@@ -125,6 +124,7 @@ header a {
     justify-content: right;
     align-items: center;
 }
+
 
 /* signup.html - Page d'inscription */
 .register {
@@ -168,6 +168,7 @@ header a {
     align-items: center;
 }
 
+/* subscription.html */
 .users_follows {
     margin: 0 auto;
     height: 100px;
@@ -179,11 +180,6 @@ header a {
 .users_follows h2 {
     padding-bottom: 10px;
     font-size: 30px;
-}
-
-.users_follows input {
-    width: 300px;
-    height: 30px;
 }
 
 .subscription {
@@ -212,6 +208,18 @@ header a {
     font-size: 30px;
 }
 
+#id_username {
+    width: 400px;
+    height: 30px;
+}
+
+.users_follows__add {
+    width: auto;
+    padding: 8px 40px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
 /* home.html - page de flux */
 .critical {
     width: 100%;
@@ -223,13 +231,38 @@ header a {
 }
 
 .flux .post {
-    width: 50%;
-    height: 500px;
+    width: 25%;
+    height: 450px;
     margin: 0 auto;
-    border-radius: 20px;
     border: black 1px solid;
     padding: 10px;
+    margin-bottom: 15px;
 }
+
+.book {
+    max-width: 400px;
+    margin: 0 auto;
+    height: 400px;
+    padding: 10px;
+    border: black 1px solid;
+    display: flex;
+    flex-direction: column;
+}
+
+.book_link {
+    padding-bottom: 20px;
+}
+
+.date_time {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.book img {
+    height: 300px;
+    width: 230px;
+}
+
 
 /* ticket_upload.html */
 .upload_ticket {
