@@ -21,7 +21,7 @@ body {
     margin-top: 20px;
 }
 
-/* base.html */
+/* /!\ base.html /!\ */
 header {
     background-color: var(--background_color);
     width: 100%;
@@ -80,7 +80,7 @@ header a {
     text-align: center;
 }
 
-/* login.html - Page d'authentifiction */
+/* /!\ login.html - Page d'authentifiction /!\ */
 .login {
    max-width: 900px;
    margin: 0 auto;
@@ -126,7 +126,7 @@ header a {
 }
 
 
-/* signup.html - Page d'inscription */
+/* /!\ signup.html - Page d'inscription /!\ */
 .register {
     max-width: 600px;
     margin: 0 auto;
@@ -168,7 +168,7 @@ header a {
     align-items: center;
 }
 
-/* subscription.html */
+/* /!\ subscription.html /!\ */
 .users_follows {
     margin: 0 auto;
     height: 100px;
@@ -220,7 +220,7 @@ header a {
     cursor: pointer;
 }
 
-/* home.html - page de flux */
+/* /!\ home.html - page de flux /!\ */
 .critical {
     width: 100%;
     margin: 0 auto;
@@ -264,7 +264,7 @@ header a {
 }
 
 
-/* ticket_upload.html */
+/* /!\ ticket_upload.html /!\ */
 .upload_ticket {
     max-width: 600px;
     margin: 0 auto;
@@ -304,7 +304,7 @@ header a {
     justify-content: flex-end;
 }
 
-/* create_ticket_and_review.html */
+/* /!\ create_ticket_and_review.html /!\ */
 .ticket_and_reviews {
     max-width: 800px;
     margin: 0 auto;

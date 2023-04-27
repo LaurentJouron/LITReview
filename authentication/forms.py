@@ -4,9 +4,14 @@ from authentication.models import User
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField(max_length=150, required=True)
+    username = forms.CharField(
+        label=False,
+        widget=forms.TextInput(attrs={'placeholder': "Nom d'utilisateur"}),
+    )
     password = forms.CharField(
-        max_length=128, widget=forms.PasswordInput(), required=True
+        label=False,
+        widget=forms.PasswordInput(attrs={'placeholder': "Mot de passe"}),
+        required=True,
     )
 
 
@@ -32,6 +37,15 @@ class SignupForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
         fields = ('username', 'password1', 'password2')
+        label = False
+
+        widgets = {
+            'username': forms.TextInput(
+                attrs={
+                    'placeholder': "Nom d'utilisateur",
+                }
+            ),
+        }
 
 
 class SubscriptionForm(forms.Form):
