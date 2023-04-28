@@ -1,21 +1,21 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.contrib.auth.forms import UserCreationForm
 from authentication.models import User
 
 
 class LoginForm(forms.Form):
     username = forms.CharField(
-        label=False,
         widget=forms.TextInput(attrs={'placeholder': "Nom d'utilisateur"}),
     )
     password = forms.CharField(
-        label=False,
         widget=forms.PasswordInput(attrs={'placeholder': "Mot de passe"}),
-        required=True,
     )
 
     class Meta:
-        ...
+        model = User
+        fields = ('username', 'password')
+        help_texts = {"username": None}
+        labels = {"username": ""}
 
 
 class SignupForm(UserCreationForm):
