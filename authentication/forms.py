@@ -14,6 +14,9 @@ class LoginForm(forms.Form):
         required=True,
     )
 
+    class Meta:
+        ...
+
 
 class SignupForm(UserCreationForm):
     password1 = forms.CharField(
@@ -37,7 +40,8 @@ class SignupForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = User
         fields = ('username', 'password1', 'password2')
-        label = False
+        help_texts = {"username": None}
+        labels = {"username": ""}
 
         widgets = {
             'username': forms.TextInput(

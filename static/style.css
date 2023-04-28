@@ -93,7 +93,7 @@ header a {
    align-items: center;
 }
 
-.signup, .signin{
+.signup, .signin {
     width: 600px;
     height: 200px;
     padding: 10px;
@@ -124,7 +124,6 @@ header a {
     justify-content: right;
     align-items: center;
 }
-
 
 /* /!\ signup.html - Page d'inscription /!\ */
 .register {
