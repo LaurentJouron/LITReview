@@ -4,18 +4,21 @@
 
 {% block content %}
     <section class="login">
-        <div class="signup">
+        <div class="login__signup">
             <p>{{ message }}</p>
             <h2>Inscrivez-vous maintenant</h2>
-            <a href="{% url 'signup' %}"><button class="btn signup_btn" type='button'>S'inscrire</button></a>
+            <a href="{% url 'signup' %}">
+                <button class="btn" type='button'>S'inscrire</button>
+            </a>
         </div>
-        <div class="signin">
+
+        <div class="login__signin">
             <h2>Connectez-vous</h2>
             <form method="post">
                 {{ form.as_p }}
                 {% csrf_token %}
                 <div class="login_btn">
-                    <button class="btn signin__btn" type="submit">Se connecter</button>
+                    <button class="btn" type="submit">Se connecter</button>
                 </div>
             </form>
         </div>

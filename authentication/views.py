@@ -27,7 +27,7 @@ def signup(request):
 
 class LoginPage(View):
     form_class = LoginForm
-    template_name = 'authentication/login.html'
+    template = 'authentication/login.html'
 
     def get(self, request):
         form = self.form_class()
@@ -35,30 +35,29 @@ class LoginPage(View):
         context = {'form': form, 'message': message}
         return render(
             request,
-            self.template_name,
+            self.template,
             context=context,
         )
 
     def post(self, request):
-        if request.method == 'POST':
-            form = self.form_class(request.POST)
-            message = ''
-            if form.is_valid():
-                user = authenticate(
-                    username=form.cleaned_data['username'],
-                    password=form.cleaned_data['password'],
-                )
-                if user is not None:
-                    login(request, user)
-                    return redirect(settings.LOGIN_REDIRECT_URL)
-                else:
-                    message = 'Identifiants incorrects.'
-            context = {'form': form, 'message': message}
-            return render(
-                request,
-                self.template_name,
-                context=context,
+        form = self.form_class(request.POST)
+        message = ''
+        if form.is_valid():
+            user = authenticate(
+                username=form.cleaned_data['username'],
+                password=form.cleaned_data['password'],
             )
+            if user is not None:
+                login(request, user)
+                return redirect(settings.LOGIN_REDIRECT_URL)
+            else:
+                message = 'Identifiants incorrects.'
+        context = {'form': form, 'message': message}
+        return render(
+            request,
+            self.template,
+            context=context,
+        )
 
 
 def logout_user(request):
@@ -71,7 +70,7 @@ def logout_user(request):
 
 
 class SubscriptionPage(View):
-    template_name = 'authentication/subscription.html'
+    template = 'authentication/subscription.html'
     form_class = SubscriptionForm
 
     def get(self, request):
@@ -92,7 +91,7 @@ class SubscriptionPage(View):
         }
         return render(
             request,
-            self.template_name,
+            self.template,
             context=context,
         )
 
@@ -111,13 +110,13 @@ class SubscriptionPage(View):
         context = {'form': form}
         return render(
             request,
-            self.template_name,
+            self.template,
             context=context,
         )
 
 
 class Unsubscribe(View):
-    template_name = ('authentication/unsubscribe.html',)
+    template = 'authentication/unsubscribe.html'
 
     def get(self, request, sub_id=None):
         subscription = UserFollows.objects.get(id=sub_id)
@@ -125,7 +124,7 @@ class Unsubscribe(View):
             context = {'followed_user': subscription.followed_user}
             return render(
                 request,
-                self.template_name,
+                self.template,
                 context=context,
             )
 

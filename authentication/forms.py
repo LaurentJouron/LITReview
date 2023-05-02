@@ -1,21 +1,29 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from authentication.models import User
+from django.contrib.auth.models import User
 
 
 class LoginForm(forms.Form):
     username = forms.CharField(
-        widget=forms.TextInput(attrs={'placeholder': "Nom d'utilisateur"}),
+        max_length=50,
+        label=False,
+        widget=forms.TextInput(
+            attrs={
+                'class': 'textbox login__textarea',
+                'placeholder': 'Nom d\'utilisateur',
+            }
+        ),
     )
     password = forms.CharField(
-        widget=forms.PasswordInput(attrs={'placeholder': "Mot de passe"}),
+        max_length=50,
+        label=False,
+        widget=forms.PasswordInput(
+            attrs={
+                'class': 'textbox login__textarea',
+                'placeholder': 'Mot de passe',
+            }
+        ),
     )
-
-    class Meta:
-        model = User
-        fields = ('username', 'password')
-        help_texts = {"username": None}
-        labels = {"username": ""}
 
 
 class SignupForm(UserCreationForm):
@@ -23,6 +31,7 @@ class SignupForm(UserCreationForm):
         label=False,
         widget=forms.PasswordInput(
             attrs={
+                'class': 'textbox signup-textarea',
                 'placeholder': "Mot de passe",
             }
         ),
@@ -32,6 +41,7 @@ class SignupForm(UserCreationForm):
         label=False,
         widget=forms.PasswordInput(
             attrs={
+                'class': 'textbox signup-textarea',
                 'placeholder': "Confirmer mot de passe",
             }
         ),
