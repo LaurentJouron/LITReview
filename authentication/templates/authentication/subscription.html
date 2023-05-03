@@ -5,13 +5,13 @@
 {% block content %}
     <section class="users_follows">
         <h2>Suivre d'autres utilisateurs</h2>
+        <div class="users_follows__add">
         <form method="POST">
-            {% csrf_token %}
-            <div class="users_follows__add">
+                {% csrf_token %}
                 {{ form }}
                 <input class="btn users_follows_btn" type="submit" value="Envoyer">
-            </div>
-        </form>
+            </form>
+        </div>
     </section>
 
     <section class="subscription">

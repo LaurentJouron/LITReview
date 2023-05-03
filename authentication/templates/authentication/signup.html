@@ -3,10 +3,8 @@
 {% block title %}Formulaire d'inscription{% endblock title %}
 
 {% block content %}
-    <section class="register">
-        <div class="register__title">
-            <h2>Inscrivez-vous</h2>
-        </div>
+<section class="register">
+        <h2 class="register__title">Inscrivez-vous</h2>
         {% if form.errors %}
             {{ form.errors }}
         {% endif %}
@@ -15,9 +13,7 @@
                 {{ form.as_p }}
                 {% csrf_token %}
                 <div class="register_btn">
-                    <a href="{% url 'login' %}">
-                        <button class="btn back_btn" type='button'>Retourner</button>
-                    </a>
+                    <a href="{% url 'login' %}"><button class="btn register_submit_btn" type='button'>Retourner</button></a>
                     <button class="btn register_submit_btn" type="submit" >S’inscrire</button>
                 </div>
             </div>
