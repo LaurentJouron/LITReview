@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
+from authentication.models import User
 
 
 class LoginForm(forms.Form):
@@ -9,7 +9,7 @@ class LoginForm(forms.Form):
         label=False,
         widget=forms.TextInput(
             attrs={
-                'class': 'textbox',
+                'class': 'textbox textbox_login_username',
                 'placeholder': 'Nom d\'utilisateur',
             }
         ),
@@ -19,7 +19,7 @@ class LoginForm(forms.Form):
         label=False,
         widget=forms.PasswordInput(
             attrs={
-                'class': 'textbox',
+                'class': 'textbox textbox_login_password',
                 'placeholder': 'Mot de passe',
             }
         ),
@@ -31,7 +31,7 @@ class SignupForm(UserCreationForm):
         label=False,
         widget=forms.PasswordInput(
             attrs={
-                'class': 'textbox',
+                'class': 'textbox textbox_signup_username',
                 'placeholder': "Mot de passe",
             }
         ),
@@ -41,7 +41,7 @@ class SignupForm(UserCreationForm):
         label=False,
         widget=forms.PasswordInput(
             attrs={
-                'class': 'textbox',
+                'class': 'textbox textbox_signup_password',
                 'placeholder': "Confirmer mot de passe",
             }
         ),
@@ -56,7 +56,7 @@ class SignupForm(UserCreationForm):
         widgets = {
             'username': forms.TextInput(
                 attrs={
-                    'class': 'textbox',
+                    'class': 'textbox textbox_signup_username',
                     'placeholder': "Nom d'utilisateur",
                 }
             ),
@@ -69,7 +69,7 @@ class SubscriptionForm(forms.Form):
         label=False,
         widget=forms.TextInput(
             attrs={
-                'class': 'textbox',
+                'class': 'textbox textbox_subscription_username',
                 'placeholder': 'Nom d\'utilisateur',
             }
         ),

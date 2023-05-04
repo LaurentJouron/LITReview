@@ -1,14 +1,12 @@
-/* Global */
+/*#########/!\ Global /!\#########*/
 *, ::before, ::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
-
 body {
     background: #f1f1f1;
 }
-
 header {
     width: 100%;
     display: flex;
@@ -19,24 +17,20 @@ header {
     margin-top: 10px;
     margin-bottom: 10px;
 }
-
 h1 {
     font-size: 40px;
     font-weight: 800;
 }
-
 h2 {
     font-size: 25px;
     font-weight: 700;
 }
-
 .textbox {
     width: 400px;
     height: 30px;
     text-align: center;
     font-size: 18px;
 }
-
 .btn {
     width: auto;
     padding: 8px 40px;
@@ -44,8 +38,10 @@ h2 {
     cursor: pointer;
     margin-top: 20px;
 }
+/*#########/!\ end Global /!\#########*/
 
-/* /!\ base.html /!\ */
+
+/*#########/!\ base.html /!\#########*/
 .title {
     height: 50px;
     margin-left: 42%;
@@ -53,7 +49,6 @@ h2 {
     align-items: center;
     padding-right: 100px;
 }
-
 .nav_link {
     text-decoration: none;
     color: black;
@@ -61,8 +56,10 @@ h2 {
     padding-right: 20px;
     cursor: pointer;
 }
+/*#########/!\ end base.html /!\#########*/
 
-/* /!\ login.html /!\ */
+
+/*#########/!\ login.html /!\#########*/
 .login {
     max-width: 900px;
     margin: 0 auto;
@@ -74,21 +71,17 @@ h2 {
     justify-content: center;
     align-items: center;
 }
-
 .login__signin, .login__signup {
     height: 100%;
     width: 100%;
     text-align: center;
 }
-
 .login__signin h2 {
     padding-bottom: 20px;
 }
-
 .login__signin p {
     padding-bottom: 20px;
 }
-
 .login__signup h2 {
     width: 550px;
 }
@@ -102,8 +95,10 @@ h2 {
     align-items: center;
     padding-left: 50px;
 }
+/*#########/!\ end login.html /!\#########*/
 
-/* /!\ signup.html /!\ */
+
+/*#########/!\ signup.html /!\#########*/
 .register {
     max-width: 900px;
     margin: 0 auto;
@@ -113,15 +108,12 @@ h2 {
     gap: 100px;
     text-align: center;
 }
-
 .register__title {
     margin-bottom: 20px;
 }
-
 .register__submit p {
     padding-bottom: 20px;
 }
-
 .register_btn {
     width: 400px;
     margin: 0 auto;
@@ -130,61 +122,61 @@ h2 {
     justify-content: right;
     align-items: center;
 }
+/*#########/!\ end signup.html /!\#########*/
 
-/* /!\ subscription.html /!\ */
+
+/*#########/!\ subscription.html /!\#########*/
 .users_follows {
     margin: 0 auto;
-    height: 150px;
+    height: 100px;
     padding: 30px;
     text-align: center;
-    margin-top: 150px;
-    padding-bottom: 50px;
+    margin-top: 20px;
 }
-
+.users_follows h2 {
+    padding-bottom: 10px;
+    font-size: 30px;
+}
 .subscription {
     margin: 0 auto;
-    height: 150px;
-    margin-top: 20px;
+    height: 100px;
+    padding: 30px;
     text-align: center;
+    margin-top: 50px;
 }
-
-.subscription__title {
+.subscription h2 {
     padding-bottom: 10px;
-    padding-top: 10px;
+    font-size: 30px;
 }
-
 .subscribers {
     margin: 0 auto;
-    height: 150px;
+    height: 100px;
     padding: 30px;
     text-align: center;
-    margin-top: 30px;
-    padding-bottom: 10px;
+    margin-top: 50px;
 }
-
-.subscription_items {
-    margin: 0 auto;
-    height: 150px;
-    padding: 30px;
-    text-align: center;
-    margin-top: 30px;
+.subscribers h2 {
     padding-bottom: 10px;
-background: blue;
+    font-size: 30px;
 }
-
- .subscription_items {
-    display: flex;
-    align-items: center;
- }
-.subscription_name {
-    width: 600px;
+#id_username {
+    width: 400px;
     height: 30px;
-    font-size: 18px;
-    border: 2px black solid;
 }
+.users_follows__add {
+    width: auto;
+    padding: 8px 40px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+/*#########/!\ end subscription.html /!\ #########*/
 
 
-/* /!\ home.html - page de flux /!\ */
+/*#########/!\ unsubscribe.html /!\#########*/
+/*#########/!\ end unsubscribe.html /!\#########*/
+
+
+/*#########/!\ home.html - page de flux /!\#########*/
 .critical {
     width: 100%;
     margin: 0 auto;
@@ -193,7 +185,6 @@ background: blue;
     justify-content: center;
     gap: 120px;
 }
-
 .flux .post {
     width: 25%;
     height: 500px;
@@ -202,7 +193,6 @@ background: blue;
     padding: 10px;
     margin-bottom: 15px;
 }
-
 .book {
     max-width: 400px;
     margin: 0 auto;
@@ -212,54 +202,47 @@ background: blue;
     display: flex;
     flex-direction: column;
 }
-
 .book_link {
     padding-bottom: 20px;
 }
-
 .date_time {
     display: flex;
     justify-content: flex-end;
     padding-bottom: 10px;
 }
-
 .book img {
     height: 300px;
     width: 230px;
 }
+/*#########/!\ end home.html /!\#########*/
 
 
-/* /!\ ticket_upload.html /!\ */
+/*#########/!\ ticket_upload.html /!\#########*/
 .upload_ticket {
     max-width: 600px;
     margin: 0 auto;
     padding: 10px;
     border-radius: 5px;
 }
-
 .upload_ticket h2 {
     text-align: center;
     margin: 20px;
     font-size: 30px;
 }
-
 .upload_ticket:nth-child(1) input {
     width: 600px;
     height: 30px;
     padding-bottom: 20px;
     margin-bottom: 40px;
 }
-
 .upload_ticket label {
     font-size: 20px;
 }
-
 #id_description {
     width: 600px;
     padding-bottom: 20px;
     margin-bottom: 40px;
 }
-
 .upload_ticket__btn {
     width: 650px;
     margin: 0 auto;
@@ -268,21 +251,21 @@ background: blue;
     display: flex;
     justify-content: flex-end;
 }
+/*#########/!\ end ticket_upload.html /!\#########*/
 
-/* /!\ create_ticket_and_review.html /!\ */
+
+/*#########/!\ create_ticket_and_review.html /!\#########*/
 .ticket_and_reviews {
     max-width: 800px;
     margin: 0 auto;
     height: 800px;
     padding: 10px;
 }
-
 .critical_title {
     text-align: center;
     margin: 20px;
     font-size: 30px;
 }
-
 .ticket, .reviews {
     max-width: 700px;
     margin: 0 auto;
@@ -290,33 +273,28 @@ background: blue;
     padding: 10px;
     border: 1px black solid;
 }
-
 #id_title, #id_headline {
     width: 650px;
     height: 30px;
     padding-bottom: 20px;
     margin-bottom: 30px;
 }
-
 #id_description, #id_body {
     width: 650px;
     height: 100px;
     padding-bottom: 5px;
     margin-bottom: 10px;
 }
-
 .book_article, .book_critical {
     margin-bottom: 10px;
     font-size: 20px;
     font-weight: 600;
 }
-
 #id_rating {
     display: flex;
     justify-content: space-around;
     padding-bottom: 10px;
 }
-
 .ticket_and_reviews__btn  {
     width: 650px;
     margin: 0 auto;
@@ -325,3 +303,4 @@ background: blue;
     display: flex;
     justify-content: flex-end;
 }
+/*#########/!\ end create_ticket_and_review.html /!\#########*/
