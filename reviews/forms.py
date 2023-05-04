@@ -1,5 +1,3 @@
-from tkinter import Widget
-from xml.dom.minidom import Attr
 from django import forms
 
 from . import models

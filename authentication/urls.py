@@ -1,30 +1,19 @@
 from django.urls import path
-from django.contrib.auth.views import (
-    LoginView,
-    LogoutView,
-)
+from authentication import views
 from django.contrib.auth.decorators import login_required
-import authentication.views
 
 urlpatterns = [
-    path(
-        "",
-        LoginView.as_view(
-            template_name='authentication/login.html',
-            redirect_authenticated_user=True,
-        ),
-        name='login',
-    ),
-    path("logout", LogoutView.as_view(), name='logout'),
-    path('signup', authentication.views.signup, name='signup'),
+    path("", views.LoginView.as_view(), name='login'),
+    path("logout", views.logout_user, name='logout'),
+    path('signup', views.SignupView.as_view(), name='signup'),
     path(
         'subscriptions',
-        login_required(authentication.views.SubscriptionPage.as_view()),
+        login_required(views.SubscriptionView.as_view()),
         name='subscriptions',
     ),
     path(
         '<int:sub_id>/unsubscribe',
-        login_required(authentication.views.Unsubscribe.as_view()),
+        login_required(views.Unsubscribe.as_view()),
         name='unsubscribe',
     ),
 ]

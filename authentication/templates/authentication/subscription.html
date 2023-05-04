@@ -4,35 +4,37 @@
 
 {% block content %}
     <section class="users_follows">
-        <h2>Suivre d'autres utilisateurs</h2>
-        <div class="users_follows__add">
+        <h2 class="subscription__title">Suivre d'autres utilisateurs</h2>
         <form method="POST">
-                {% csrf_token %}
+            {% csrf_token %}
+            <div class="users_follows__add">
                 {{ form }}
                 <input class="btn users_follows_btn" type="submit" value="Envoyer">
-            </form>
-        </div>
+            </div>
+        </form>
     </section>
 
     <section class="subscription">
-        <h2>Abonnements</h2>
+        <h2 class="subscription__title">Abonnements</h2>
         <ul>
             {% for subscription in subscriptions %}
-                {% if not forloop.first %}
-                    <hr>
-                {% endif %}
-                <li>
-                    {{ subscription.followed_user }}
-                    <a href="{% url 'unsubscribe' subscription.id %}"><button class="btn subscription_btn" type='button'>Désabonner</button></a>
-                </li>
+            {% if not forloop.first %}
+            <hr>
+            {% endif %}
+            <li>
+                <div class="subscription_items">
+                    <h3 class="subscription_name">{{ subscription.followed_user }}</h3>
+                    <a href="{% url 'unsubscribe' subscription.id %}"><button class="btn" type='button'>Désabonner</button></a>
+                </div>
+            </li>
             {% empty %}
-                <p>Aucun abonnement</p>
+            <p>Aucun abonnement</p>
             {% endfor %}
         </ul>
     </section>
 
     <section class="subscribers">
-        <h2>Abonnés</h2>
+        <h2 class="subscription__title">Abonnés</h2>
         <ul>
             {% for user in subscribers %}
                 {% if not forloop.first %}
