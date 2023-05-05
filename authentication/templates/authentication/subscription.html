@@ -3,47 +3,45 @@
 {% block title %}Onglet d'abonnements{% endblock title %}
 
 {% block content %}
-    <section class="users_follows">
-        <h2 class="subscription__title">Suivre d'autres utilisateurs</h2>
-        <form method="POST">
-            {% csrf_token %}
-            <div class="users_follows__add">
+    <div class="followers">
+        <section class="users_follows">
+            <h2>Suivre d'autres utilisateurs</h2>
+            <form method="POST">
+                {% csrf_token %}
                 {{ form }}
-                <input class="btn users_follows_btn" type="submit" value="Envoyer">
-            </div>
-        </form>
-    </section>
-
-    <section class="subscription">
-        <h2 class="subscription__title">Abonnements</h2>
-        <ul>
-            {% for subscription in subscriptions %}
-            {% if not forloop.first %}
-            <hr>
-            {% endif %}
-            <li>
-                <div class="subscription_items">
-                    <h3 class="subscription_name">{{ subscription.followed_user }}</h3>
-                    <a href="{% url 'unsubscribe' subscription.id %}"><button class="btn" type='button'>Désabonner</button></a>
-                </div>
-            </li>
-            {% empty %}
-            <p>Aucun abonnement</p>
-            {% endfor %}
-        </ul>
-    </section>
-
-    <section class="subscribers">
-        <h2 class="subscription__title">Abonnés</h2>
-        <ul>
-            {% for user in subscribers %}
+                <input class="btn" type="submit" value="Envoyer">
+            </form>
+        </section>
+        <section class="subscription">
+            <h2 class="subscription__title">Abonnements</h2>
+            <ul>
+                {% for subscription in subscriptions %}
                 {% if not forloop.first %}
-                    <hr>
+
                 {% endif %}
-                <li>{{ user }}</li>
-            {% empty %}
-                <p>Aucun abonné</p>
-            {% endfor %}
-        </ul>
-    </section>
+                <li>
+                    <div class="subscription_items">
+                        <h3 class="subscription_name">{{ subscription.followed_user }}</h3>
+                        <a href="{% url 'unsubscribe' subscription.id %}"><button class="btn subscription_name__btn" type='button'>Désabonner</button></a>
+                    </div>
+                </li>
+                {% empty %}
+                <p>Aucun abonnement</p>
+                {% endfor %}
+            </ul>
+        </section>
+        <section class="subscribers">
+            <h2 class="subscription__title">Abonnés</h2>
+            <ul>
+                {% for user in subscribers %}
+                    {% if not forloop.first %}
+                        <hr>
+                    {% endif %}
+                    <li class="subscribers__username">{{ user }}</li>
+                {% empty %}
+                    <p>Aucun abonné</p>
+                {% endfor %}
+            </ul>
+        </section>
+    </div>
 {% endblock %}

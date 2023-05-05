@@ -1,34 +1,43 @@
 from django.urls import path
-from django.contrib import admin
 from django.contrib.auth.decorators import login_required
-
-from reviews.views import DeleteTicket, PostTicket
-import reviews.views
+from . import views
 
 urlpatterns = [
-    path("home/", reviews.views.home, name='home'),
+    path('', login_required(views.FluxView.as_view()), name='home'),
+    path('posts/', login_required(views.PostView.as_view()), name='posts'),
     path(
-        'ticket/upload/',
-        reviews.views.ticket_upload,
-        name='ticket_upload',
+        'create-ticket/',
+        login_required(views.CreateTicket.as_view()),
+        name='create_ticket',
     ),
     path(
-        'ticket/<int:ticket_id>', reviews.views.view_ticket, name='view_ticket'
+        'create-review/',
+        login_required(views.CreateReview.as_view()),
+        name='create_review',
     ),
     path(
-        'ticket/create_ticket_and_review',
-        reviews.views.create_ticket_and_review,
-        name='create_ticket_and_review',
-    ),
-    path(
-        'ticket/<int:ticket_id>/edit',
-        reviews.views.edit_ticket,
-        name='edit_ticket',
+        'ticket/<int:ticket_id>/update/',
+        login_required(views.UpdateTicket.as_view()),
+        name='update_ticket',
     ),
     path(
         'ticket/<int:ticket_id>/delete/',
-        login_required(DeleteTicket.as_view()),
+        login_required(views.DeleteTicket.as_view()),
         name='delete_ticket',
     ),
-    path('posts/', login_required(PostTicket.as_view()), name='posts'),
+    path(
+        'ticket/<int:ticket_id>/create-review/',
+        login_required(views.CreateReviewExistingTicket.as_view()),
+        name='create_review_selected_ticket',
+    ),
+    path(
+        'review/<int:review_id>/update',
+        login_required(views.UpdateReview.as_view()),
+        name='update_review',
+    ),
+    path(
+        'review/<int:review_id>/delete/',
+        login_required(views.DeleteReview.as_view()),
+        name='delete_review',
+    ),
 ]

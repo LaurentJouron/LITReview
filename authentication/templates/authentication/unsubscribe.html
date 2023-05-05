@@ -2,13 +2,13 @@
 
 {% block content%}
     <section>
-        <h2>Arrêter de suivre {{ followed_user }} ?</h2>
+        <h2 class="unsubscribe__title">Arrêter de suivre {{ followed_user }} ?</h2>
         <form action="" method="post" enctype='multipart/form-data'>
             {% csrf_token %}
             <div class="btn unsubscribe_btn">
-                <a href="{% url 'posts' %}"><button type='button'>Retour</button></a>
+                <a href="{% url 'subscriptions' %}"><button class="btn" type='button'>Retour</button></a>
+                <input class="btn unsubscribe_input" type="submit" value="Ne plus suivre">
             </div>
-            <input class="unsubscribe_input" type="submit" value="Ne plus suivre">
         </form>
     </section>
 {% endblock %}
