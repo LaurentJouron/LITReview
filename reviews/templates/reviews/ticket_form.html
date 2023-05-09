@@ -8,24 +8,20 @@
         <h2 class='title'>Modifier votre ticket</h2>
     {% endif %}
     <form action="" method="post" enctype='multipart/form-data'>
-        {% csrf_token %}
+        <div class="ticket_form">
+            {% csrf_token %}
+            <div class="ticket_form__items">
+                <h2>{{ form.title.label }}</h2>
+                {{ form.title }}
 
-        <div class="textbox textbox__title">
-            <label>{{ form.title.label }}</label>
-            {{ form.title }}
+                <h2 class="ticket_form_label_description">{{ form.description.label }}</h2>
+                {{ form.description }}
+
+                <h2 class="ticket_form_label_image">{{ form.image.label }}</h2>
+                <element class="ticket_form__image">{{ form.image }}</element>
+            </div>
+            <button class='btn form_btn' type="submit">Envoyer</button>
         </div>
-
-        <div>
-            <label>{{ form.description.label }}</label>
-            {{ form.description }}
-        </div>
-
-        <div>
-            <label>{{ form.image.label }}</label>
-            {{ form.image }}
-        </div>
-
-        <p style='text-align: right'><input class='btn form-btn' type="submit" value="Envoyer"></p>
     </form>
 </section>
 {% endblock %}

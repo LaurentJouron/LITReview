@@ -309,11 +309,34 @@ h2 {
 
 
 /*#########/!\ ticket_form.html /!\#########*/
-.upload_ticket {
-    max-width: 600px;
+.ticket_form {
+    max-width: 800px;
+    height: 400px;
     margin: 0 auto;
+    margin-top: 20px;  
     padding: 10px;
-    border-radius: 5px;
+}
+.ticket_form__items {
+    max-width: 700px;
+    margin: 0 auto;
+    margin-top: 10px;  
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+#id_title{
+    width: 680px;
+    height: 30px;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.ticket_form_label_image {
+    margin-top: 10px;
+}
+.ticket_form__image {
+    font-size: 18px;
+    margin-top: 5px;
 }
 /*#########/!\ end ticket_form.html /!\#########*/
 

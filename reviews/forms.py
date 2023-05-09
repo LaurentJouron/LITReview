@@ -10,6 +10,11 @@ class TicketForm(forms.ModelForm):
         labels = {
             'title': 'Titre',
         }
+        widget = forms.TextInput(
+            attrs={
+                'class': 'textbox textbox_title',
+            }
+        )
 
 
 class ReviewForm(forms.ModelForm):
