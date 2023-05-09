@@ -8,6 +8,11 @@ from authentication.models import UserFollows, User
 
 
 class SignupView(View):
+    """
+    This class is used to create a user account on the first login.
+    At the validation, the redirection brings to the homepage of the site.
+    """
+
     template = ('authentication/signup.html',)
     form = SignupForm
 
@@ -27,13 +32,17 @@ class SignupView(View):
 
 
 class LoginView(View):
+    """
+    This class is used to connect to all connections after the
+    user is registered.
+    """
+
     form = LoginForm
     template = 'authentication/login.html'
 
     def get(self, request):
         form = self.form()
-        message = ''
-        context = {'form': form, 'message': message}
+        context = {'form': form}
         return render(
             request,
             self.template,
@@ -53,7 +62,7 @@ class LoginView(View):
                     login(request, user)
                     return redirect(settings.LOGIN_REDIRECT_URL)
                 else:
-                    message = 'Identifiants incorrects.'
+                    message = 'Identifiants incorrects'
             context = {'form': form, 'message': message}
             return render(
                 request,
@@ -72,6 +81,11 @@ def logout_user(request):
 
 
 class SubscriptionView(View):
+    """
+    This class allows the logged-in user to follow other users and
+    see the tickets of those they follow.
+    """
+
     template = 'authentication/subscription.html'
     form = SubscriptionForm
 
@@ -118,6 +132,11 @@ class SubscriptionView(View):
 
 
 class Unsubscribe(View):
+    """
+    This class allows the logged in user to stop following the
+    selected users.
+    """
+
     template = ('authentication/unsubscribe.html',)
 
     def get(self, request, sub_id=None):

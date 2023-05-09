@@ -95,6 +95,10 @@ h2 {
     align-items: center;
     padding-left: 50px;
 }
+.login_signin__message {
+    font-size: 20px;
+
+}
 /*#########/!\ end login.html /!\#########*/
 
 
@@ -259,6 +263,36 @@ h2 {
 
 
 /*#########/!\ review_form.html /!\#########*/
+.title_reviews {
+    margin-top: 30px;
+    text-align: center;
+}
+.create_review {
+    max-width: 800px;
+    height: 700px;
+    margin: 0 auto;
+    margin-top: 20px;  
+    padding: 10px;
+    border: 1px black solid;
+    background: wheat;
+}
+.book_article {
+    max-width: 800px;
+    margin: 0 auto;
+    height: 350px;
+    padding: 10px;
+    border: 1px black solid;
+}
+.book_title {
+    margin-top: 20px;
+    display: flex;
+}
+
+
+
+
+
+
 /*#########/!\ end review_form.html /!\#########*/
 
 
@@ -292,7 +326,7 @@ h2 {
     border: black 1px solid;
     padding: 10px;
 }
-.post_snippet__date {
+.post_snippet__user {
     margin-bottom: 15px;
     display: flex;
     justify-content: space-between;
@@ -300,95 +334,7 @@ h2 {
 .post_snippet__title, .post_snippet__description {
     margin-bottom: 20px;
 }
+.post_snippet__title a {
+    text-decoration: none;
+}
 /*#########/!\ end ticket_snippet.html /!\#########*/
-
-
-
-
-/*#########/!\ ticket_upload.html /!\#########*/
-/* .upload_ticket {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 10px;
-    border-radius: 5px;
-}
-.upload_ticket h2 {
-    text-align: center;
-    margin: 20px;
-    font-size: 30px;
-}
-.upload_ticket:nth-child(1) input {
-    width: 600px;
-    height: 30px;
-    padding-bottom: 20px;
-    margin-bottom: 40px;
-}
-.upload_ticket label {
-    font-size: 20px;
-}
-#id_description {
-    width: 600px;
-    padding-bottom: 20px;
-    margin-bottom: 40px;
-}
-.upload_ticket__btn {
-    width: 650px;
-    margin: 0 auto;
-    height: 57px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: flex-end;
-} */
-/*#########/!\ end ticket_upload.html /!\#########*/
-
-
-/*#########/!\ create_ticket_and_review.html /!\#########*/
-/* .ticket_and_reviews {
-    max-width: 800px;
-    margin: 0 auto;
-    height: 800px;
-    padding: 10px;
-}
-.critical_title {
-    text-align: center;
-    margin: 20px;
-    font-size: 30px;
-}
-.ticket, .reviews {
-    max-width: 700px;
-    margin: 0 auto;
-    height: 370px;
-    padding: 10px;
-    border: 1px black solid;
-}
-#id_title, #id_headline {
-    width: 650px;
-    height: 30px;
-    padding-bottom: 20px;
-    margin-bottom: 30px;
-}
-#id_description, #id_body {
-    width: 650px;
-    height: 100px;
-    padding-bottom: 5px;
-    margin-bottom: 10px;
-}
-.book_article, .book_critical {
-    margin-bottom: 10px;
-    font-size: 20px;
-    font-weight: 600;
-}
-#id_rating {
-    display: flex;
-    justify-content: space-around;
-    padding-bottom: 10px;
-}
-.ticket_and_reviews__btn  {
-    width: 650px;
-    margin: 0 auto;
-    height: 57px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: flex-end;
-}*/
-/*#########/!\ end create_ticket_and_review.html /!\#########*/
