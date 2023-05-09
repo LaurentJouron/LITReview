@@ -4,11 +4,13 @@
     <section>
     <h2>Vos posts</h2>
         {% for post in posts %}
+            {% if post.content_type == 'TICKET' %}
 
                 {% include 'reviews/ticket_snippet.html' with ticket=post edit_ticket=True %}
+            {% elif post.content_type == 'REVIEW' %}
 
                 {% include 'reviews/review_snippet.html' with review=post ticket=post.ticket edit_review=True %}
-
+            {% endif %}
         {% endfor %}
     </section>
 {% endblock %}

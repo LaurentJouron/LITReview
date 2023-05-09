@@ -215,6 +215,14 @@ h2 {
 /*#########/!\ end unsubscribe.html /!\#########*/
 
 
+/*#########/!\ delete.html /!\#########*/
+/*#########/!\ end delete.html /!\#########*/
+
+
+/*#########/!\ edit_ticket.html /!\#########*/
+/*#########/!\ end edit_ticket.html /!\#########*/
+
+
 /*#########/!\ home.html - page de flux /!\#########*/
 .critical {
     width: 100%;
@@ -222,42 +230,83 @@ h2 {
     height: 70px;
     display: flex;
     justify-content: center;
-    gap: 120px;
+    gap: 100px;
+    margin-bottom: 5px;
 }
-.flux .post {
-    width: 25%;
-    height: 500px;
+.flux {
+    width: 35%;
+    height: auto;
     margin: 0 auto;
-    border: black 1px solid;
-    padding: 10px;
     margin-bottom: 15px;
 }
-.book {
-    max-width: 400px;
+.post {
+    width: 100%;
+    height: auto;
     margin: 0 auto;
-    height: 430px;
+    border: black 2px solid;
     padding: 10px;
-    border: black 1px solid;
-    display: flex;
-    flex-direction: column;
-}
-.book_link {
-    padding-bottom: 20px;
-}
-.date_time {
-    display: flex;
-    justify-content: flex-end;
-    padding-bottom: 10px;
-}
-.book img {
-    height: 300px;
-    width: 230px;
+    margin-bottom: 15px;
 }
 /*#########/!\ end home.html /!\#########*/
 
 
-/*#########/!\ ticket_upload.html /!\#########*/
+/*#########/!\ posts_ticket.html /!\#########*/
+/*#########/!\ end posts_ticket.html /!\#########*/
+
+
+/*#########/!\ posts.html /!\#########*/
+/*#########/!\ end posts.html /!\#########*/
+
+
+/*#########/!\ review_form.html /!\#########*/
+/*#########/!\ end review_form.html /!\#########*/
+
+
+/*#########/!\ review_snippet.html /!\#########*/
+.post_reviews__date {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+.post_reviews__title, .post_reviews__description {
+    margin-bottom: 20px;
+}
+/*#########/!\ end review_snippet.html /!\#########*/
+
+
+/*#########/!\ ticket_form.html /!\#########*/
 .upload_ticket {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 5px;
+}
+/*#########/!\ end ticket_form.html /!\#########*/
+
+
+/*#########/!\ ticket_snippet.html /!\#########*/
+.post_snippet {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    border: black 1px solid;
+    padding: 10px;
+}
+.post_snippet__date {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+.post_snippet__title, .post_snippet__description {
+    margin-bottom: 20px;
+}
+/*#########/!\ end ticket_snippet.html /!\#########*/
+
+
+
+
+/*#########/!\ ticket_upload.html /!\#########*/
+/* .upload_ticket {
     max-width: 600px;
     margin: 0 auto;
     padding: 10px;
@@ -289,12 +338,12 @@ h2 {
     border-radius: 5px;
     display: flex;
     justify-content: flex-end;
-}
+} */
 /*#########/!\ end ticket_upload.html /!\#########*/
 
 
 /*#########/!\ create_ticket_and_review.html /!\#########*/
-.ticket_and_reviews {
+/* .ticket_and_reviews {
     max-width: 800px;
     margin: 0 auto;
     height: 800px;
@@ -341,5 +390,5 @@ h2 {
     border-radius: 5px;
     display: flex;
     justify-content: flex-end;
-}
+}*/
 /*#########/!\ end create_ticket_and_review.html /!\#########*/

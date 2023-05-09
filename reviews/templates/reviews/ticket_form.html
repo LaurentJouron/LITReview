@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<section>
+    {% if mode == 'CREATION' %}
+        <h2 class='title'>Créer un ticket</h2>
+    {% elif mode == 'EDITING' %}
+        <h2 class='title'>Modifier votre ticket</h2>
+    {% endif %}
+    <form action="" method="post" enctype='multipart/form-data'>
+        {% csrf_token %}
+
+        <div class="textbox textbox__title">
+            <label>{{ form.title.label }}</label>
+            {{ form.title }}
+        </div>
+
+        <div>
+            <label>{{ form.description.label }}</label>
+            {{ form.description }}
+        </div>
+
+        <div>
+            <label>{{ form.image.label }}</label>
+            {{ form.image }}
+        </div>
+
+        <p style='text-align: right'><input class='btn form-btn' type="submit" value="Envoyer"></p>
+    </form>
+</section>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<section>
+    {% if mode == 'CREATION' %}
+        <h2 class='title'>Créer une critique</h2>
+    {% elif mode == 'EDITING' %}
+        <h2 class='title'>Modifier votre critique</h2>
+    {% endif %}
+        <form class='create-review' action="" method="post" enctype='multipart/form-data'>
+            {% csrf_token %}
+            {% if existing_ticket %}
+                <p>Vous êtes en train de poster en réponse à {{ ticket.user }}</p>
+                {% include 'reviews/ticket_snippet.html' %} 
+            {% elif not existing_ticket %}
+                <div>
+                    <p>Livre / Article</p>
+                    <div class='form'>
+                        <div>
+                            <label>{{ ticket_form.title.label }}</label>
+                            {{ ticket_form.title }}
+                        </div>
+                        <div>
+                            <label>{{ ticket_form.description.label }}</label>
+                            {{ ticket_form.description }}
+                        </div>
+                        <div>
+                            <label>{{ ticket_form.image.label }}</label>
+                            {{ ticket_form.image }}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+            <hr>
+
+            <p>Critique</p>
+            <div>
+                <div class='form'>
+
+                    <div>
+                        <label>{{ review_form.headline.label }}</label>
+                        {{ review_form.headline }}
+                    </div>
+
+                    <div>
+                        <label>{{ review_form.rating.label }} </label>
+                        <div class='rating'>
+                            {% for value in review_form.rating %}
+                                <p>{{ value }}</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div>
+                        <label>{{ review_form.body.label }}</label>
+                        {{ review_form.body }}
+                    </div>
+
+                </div>
+            </div>
+            <hr>
+            <p style='text-align: right'><input class='btn form-btn' type="submit" value="Envoyer"></p>
+        </form>
+</section>
+{% endblock %}

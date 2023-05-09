@@ -1,6 +1,7 @@
 from django.urls import path
 from django.contrib.auth.decorators import login_required
-from . import views
+
+from reviews import views
 
 urlpatterns = [
     path('', login_required(views.FluxView.as_view()), name='home'),
@@ -22,8 +23,8 @@ urlpatterns = [
     ),
     path(
         'ticket/<int:ticket_id>/delete/',
-        login_required(views.DeleteTicket.as_view()),
-        name='delete_ticket',
+        login_required(views.Delete.as_view()),
+        name='delete',
     ),
     path(
         'ticket/<int:ticket_id>/create-review/',

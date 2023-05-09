@@ -11,7 +11,7 @@ from authentication.models import UserFollows
 
 
 class FluxView(View):
-    template = 'home.html'
+    template = 'reviews/home.html'
 
     def get(self, request):
         subscribers = []
@@ -36,7 +36,7 @@ class FluxView(View):
 
 
 class PostView(View):
-    template = 'reviews/post.html'
+    template = 'reviews/posts.html'
 
     def get(self, request):
         tickets = Ticket.objects.filter(user=request.user)
@@ -57,9 +57,8 @@ class CreateTicket(View):
 
     def get(self, request):
         form = self.form()
-        return render(
-            request, self.template, {'form': form, 'mode': 'CREATION'}
-        )
+        context = {'form': form, 'mode': 'CREATION'}
+        return render(request, self.template, context=context)
 
     def post(self, request):
         form = self.form_class(request.POST, request.FILES)
@@ -93,7 +92,7 @@ class UpdateTicket(View):
         return render(request, self.template, context=context)
 
 
-class DeleteTicket(View):
+class Delete(View):
     template = 'reviews/delete.html'
 
     def get(self, request, ticket_id=None):

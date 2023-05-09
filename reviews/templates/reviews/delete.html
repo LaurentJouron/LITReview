@@ -2,16 +2,19 @@
 
 {% block content%}
     <section>
+        {% if content_type == 'TICKET' %}
+            <h2>Supprimer votre demande</h2>
+            {% include 'reviews/edit_ticket.html' %}
 
-        <h2>Supprimer votre demande</h2>
-        {% include 'reviews/edit_ticket.html' %}
-        <h2>Supprimer votre critique</h2>
-        {% include 'reviews/edit_ticket.html' with ticket=review.ticket %}
+        {% elif content_type == 'REVIEW' %}
+            <h2>Supprimer votre critique</h2>
+            {% include 'reviews/edit_ticket.html' with ticket=review.ticket %}
+        {% endif %}
 
         <form action="" method="post" enctype='multipart/form-data'>
             {% csrf_token %}
-            <a href="{% url 'posts' %}"><button class='btn signup-submit-btn' type='button'>Retour</button></a>
-            <input class='btn signup-submit-btn' type="submit" value="Supprimer">
+            <a href="{% url 'posts' %}"><button class='btn back_submit_btn' type='button'>Retour</button></a>
+            <input class='btn delete_submit_btn' type="submit" value="Supprimer">
         </form>
     </section>
 {% endblock %}

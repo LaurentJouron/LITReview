@@ -1,18 +1,24 @@
 {% extends 'base.html' %}
 
-{% block content%}
-<section class='flux-header'>
-    <a href="{% url 'ticket_upload' %}"><button class='btn flux-header-btn'>Demander une critique</button></a>
-    {% comment %} <a href="{% url 'create_review' %}"><button class='btn flux-header-btn'>Créer une critique</button></a> {% endcomment %}
-</section>
+{{ title.title}}
 
-<section>
-    {% for post in posts %}
-        {% if post.content_type == 'TICKET' %}
-            {% include 'reviews/home.html' with ticket=post create_review=True %}
-        {% elif post.content_type == 'REVIEW' %}
-            {% include 'reviews/edit_ticket.html' with review=post ticket=post.ticket %}
-        {% endif %}
-    {% endfor %}
-</section>
-{% endblock %}
+{% block content%}
+    <div class='critical'>
+        <a href="{% url 'create_ticket' %}"><button class='btn flux-header-btn'>Demander une critique</button></a>
+        <a href="{% url 'create_review' %}"><button class='btn flux-header-btn'>Créer une critique</button></a>
+    </div>
+
+    <div class="flux">
+        {% for post in posts %}
+            <div class="post">
+                {% if post.content_type == 'TICKET' %}
+                    {% include 'reviews/ticket_snippet.html' with ticket=post create_review=True %}
+                
+                {% elif post.content_type == 'REVIEW' %}
+                    {% include 'reviews/review_snippet.html' with review=post ticket=post.ticket %}
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+    {% endblock %}
+
