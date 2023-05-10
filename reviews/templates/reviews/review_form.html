@@ -3,11 +3,11 @@
 {% block content%}
 <section>
     {% if mode == 'CREATION' %}
-        <h2 class='title_reviews'>Créer une critique</h2>
+        <h2 class='review_form__title'>Créer une critique</h2>
     {% elif mode == 'EDITING' %}
-        <h2 class='title_reviews'>Modifier votre critique</h2>
+        <h2 class='review_form__title'>Modifier votre critique</h2>
     {% endif %}
-        <form class='create_review' action="" method="post" enctype='multipart/form-data'>
+        <form class='review_form__create' action="" method="post" enctype='multipart/form-data'>
             {% csrf_token %}
             {% if existing_ticket %}
                 <p>Vous êtes en train de poster en réponse à {{ ticket.user }}</p>
@@ -15,50 +15,37 @@
             {% elif not existing_ticket %}
                 <div class="book_article">
                     <p>Livre / Article</p>
-                    <div>
-                        <div class="book_title">
-                            {{ ticket_form.title.label }}
-                            {{ ticket_form.title }}
-                        </div>
-                        <div>
-                            {{ ticket_form.description.label }}
-                            {{ ticket_form.description }}
-                        </div>
-                        <div>
-                            {{ ticket_form.image.label }}
-                            {{ ticket_form.image }}
-                        </div>
-                    </div>
+
+                        <h4 class="review_form_label__title">{{ ticket_form.title.label }}</h4>
+                        <element class="review_form__title">{{ ticket_form.title }}</element>
+
+
+                        <h4 class="review_form_label__description">{{ ticket_form.description.label }}</h4>
+                        <element class="review_form__decription">{{ ticket_form.description }}</element>
+
+                        <h4 class="review_form_label__image">{{ ticket_form.image.label }}</h4>
+                        <element class="review_form__image">{{ ticket_form.image }}</element>
                 </div>
             {% endif %}
 
 
-            <p>Critique</p>
-            <div>
-                <div class='form'>
+            <div class="critical_article">
+                    <p>Critique</p>
+                        <h4 class="review_form_critical_label__title">{{ review_form.headline.label }}</h4>
+                        <element class="review_form_critical__title">{{ review_form.headline }}</element>
 
-                    <div>
-                        {{ review_form.headline.label }}
-                        {{ review_form.headline }}
-                    </div>
-
-                    <div>
-                        {{ review_form.rating.label }}
-                        <div class='rating'>
+                        <h4 class="review_form_critical_label__rating">{{ review_form.rating.label }}</h4>
+                        <element class='review_form_critical__rating'>
                             {% for value in review_form.rating %}
                                 <p>{{ value }}</p>
                             {% endfor %}
-                        </div>
-                    </div>
+                        </element>
 
-                    <div>
-                        {{ review_form.body.label }}
-                        {{ review_form.body }}
-                    </div>
-
+                        <h4 class="review_form_critical_label__description">{{ review_form.body.label }}</h4>
+                        <div class="review_form_critical__description">{{ review_form.body }}</div>
+                        <button class='btn review_form__btn' type="submit">Envoyer</button>
                 </div>
             </div>
-            <button class='btn ticket_and_reviews__btn' type="submit">Envoyer</button>
         </form>
 </section>
 {% endblock %}

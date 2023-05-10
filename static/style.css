@@ -42,14 +42,14 @@ h2 {
 
 
 /*#########/!\ base.html /!\#########*/
-.title {
+.base_title {
     height: 50px;
     margin-left: 42%;
     display: flex;
     align-items: center;
     padding-right: 100px;
 }
-.nav_link {
+.base_nav_link {
     text-decoration: none;
     color: black;
     font-size: 20px;
@@ -263,36 +263,58 @@ h2 {
 
 
 /*#########/!\ review_form.html /!\#########*/
-.title_reviews {
+.review_form__title {
     margin-top: 30px;
     text-align: center;
 }
-.create_review {
-    max-width: 800px;
-    height: 700px;
+.review_form__create {
+    max-width: 750px;
+    height: 770px;
     margin: 0 auto;
     margin-top: 20px;  
     padding: 10px;
-    border: 1px black solid;
-    background: wheat;
 }
-.book_article {
-    max-width: 800px;
+.book_article, .critical_article {
+    max-width: 730px;
     margin: 0 auto;
-    height: 350px;
+    height: 370px;
     padding: 10px;
     border: 1px black solid;
 }
-.book_title {
-    margin-top: 20px;
-    display: flex;
+.review_form_label__title, .review_form_label__image {
+    margin-top: 15px;
 }
+.review_form__title input{
+    width: 680px;
+    height: 30px;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.review_form__decription, .review_form_critical__description, textarea {
+    width: 680px;
+    height: 130px;
+}
+.review_form_critical_label__title {
+    margin-top: 15px;
+}
+.review_form_critical__title input{
+    width: 680px;
+    height: 30px;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.review_form_critical__rating {
+    display: flex;
+    justify-content: space-around;
+}
+.review_form_critical_label__rating, .review_form_critical_label__description {
+    margin-top: 15px;
+}
+.review_form__btn {
+    margin-left: 80%;
+    margin-top: 8px;
 
-
-
-
-
-
+}
 /*#########/!\ end review_form.html /!\#########*/
 
 
@@ -324,19 +346,32 @@ h2 {
     display: flex;
     flex-direction: column;
 }
-#id_title{
+.ticket_form_title {
+    height: 50px;
+    margin-left: 42%;
+    display: flex;
+    align-items: center;
+    padding-right: 100px;
+    margin-top: 40px;
+}
+.ticket_form__title input{
     width: 680px;
     height: 30px;
-    text-align: center;
     font-size: 18px;
     margin-bottom: 10px;
 }
-.ticket_form_label_image {
+.ticket_form__description textarea{
+    width: 680px;
+}
+.ticket_form_label_description, .ticket_form_label_title, .ticket_form_label_image {
     margin-top: 10px;
 }
 .ticket_form__image {
-    font-size: 18px;
-    margin-top: 5px;
+    font-size: 15px;
+    margin-top: 10px;
+}
+.ticket_form_btn {
+    margin-left: 80%;
 }
 /*#########/!\ end ticket_form.html /!\#########*/
 

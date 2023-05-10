@@ -24,7 +24,7 @@ urlpatterns = [
     path(
         'ticket/<int:ticket_id>/delete/',
         login_required(views.Delete.as_view()),
-        name='delete',
+        name='delete_ticket',
     ),
     path(
         'ticket/<int:ticket_id>/create-review/',

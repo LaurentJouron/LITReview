@@ -3,24 +3,24 @@
 {% block content%}
 <section>
     {% if mode == 'CREATION' %}
-        <h2 class='title'>Créer un ticket</h2>
+        <h2 class='ticket_form_title'>Créer un ticket</h2>
     {% elif mode == 'EDITING' %}
-        <h2 class='title'>Modifier votre ticket</h2>
+        <h2 class='ticket_form_title'>Modifier votre ticket</h2>
     {% endif %}
     <form action="" method="post" enctype='multipart/form-data'>
         <div class="ticket_form">
             {% csrf_token %}
             <div class="ticket_form__items">
-                <h2>{{ form.title.label }}</h2>
-                {{ form.title }}
+                <h4 class="ticket_form_label_title">{{ form.title.label }}</h4>
+                <element class="ticket_form__title">{{ form.title }}</element>
 
-                <h2 class="ticket_form_label_description">{{ form.description.label }}</h2>
-                {{ form.description }}
+                <h4 class="ticket_form_label_description">{{ form.description.label }}</h4>
+                <element class="ticket_form__description">{{ form.description }}</element>
 
-                <h2 class="ticket_form_label_image">{{ form.image.label }}</h2>
+                <h4 class="ticket_form_label_image">{{ form.image.label }}</h4>
                 <element class="ticket_form__image">{{ form.image }}</element>
             </div>
-            <button class='btn form_btn' type="submit">Envoyer</button>
+            <button class='btn ticket_form_btn' type="submit">Envoyer</button>
         </div>
     </form>
 </section>

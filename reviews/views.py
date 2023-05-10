@@ -11,7 +11,7 @@ from authentication.models import UserFollows
 
 
 class FluxView(View):
-    template = 'reviews/home.html'
+    template = "reviews/home.html"
 
     def get(self, request):
         subscribers = []
@@ -36,7 +36,7 @@ class FluxView(View):
 
 
 class PostView(View):
-    template = 'reviews/posts.html'
+    template = "reviews/posts_ticket.html"
 
     def get(self, request):
         tickets = Ticket.objects.filter(user=request.user)
@@ -52,7 +52,7 @@ class PostView(View):
 
 
 class CreateTicket(View):
-    template = ('reviews/ticket_form.html',)
+    template = "reviews/ticket_form.html"
     form = TicketForm
 
     def get(self, request):
@@ -61,7 +61,7 @@ class CreateTicket(View):
         return render(request, self.template, context=context)
 
     def post(self, request):
-        form = self.form_class(request.POST, request.FILES)
+        form = self.form(request.POST, request.FILES)
         if form.is_valid():
             ticket = form.save(commit=False)
             ticket.user = request.user
@@ -71,9 +71,36 @@ class CreateTicket(View):
         return render(request, self.template, context=context)
 
 
+@login_required
+def ticket_upload(request):
+    """
+    This function gives the possibility to create a ticket, provided
+    that it is authenticated and entitled to do so. It records the ID
+    of the ticket creator. The function uses the creation of the TicketForm
+    form of the forms.py file and ticket_update.html of templates/reviews.
+    Once the ticket is created, the user is returning the home page.
+    """
+    ticket_form = TicketForm()
+    if request.method == 'POST':
+        ticket_form = TicketForm(request.POST, request.FILES)
+        if ticket_form.is_valid():
+            ticket = ticket_form.save(commit=False)
+            ticket.user_id = request.user.id
+            ticket.save()
+            return redirect(settings.LOGIN_REDIRECT_URL)
+    context = {
+        'ticket_form': ticket_form,
+    }
+    return render(
+        request,
+        'reviews/ticket_upload.html',
+        context=context,
+    )
+
+
 class UpdateTicket(View):
     form = TicketForm
-    template = ('reviews/ticket_form.html',)
+    template = "reviews/ticket_form.html"
 
     def get(self, request, ticket_id=None):
         ticket = Ticket.objects.get(id=ticket_id)
@@ -109,7 +136,7 @@ class Delete(View):
 
 
 class CreateReview(View):
-    template = 'reviews/review_form.html'
+    template = "reviews/review_form.html"
     ticket_form = TicketForm
     review_form = ReviewForm
 
@@ -148,7 +175,7 @@ class CreateReview(View):
 
 
 class CreateReviewExistingTicket(View):
-    template = 'reviews/review_form.html'
+    template = "reviews/review_form.html"
     form = ReviewForm
 
     def get(self, request, ticket_id=None):
@@ -184,7 +211,7 @@ class CreateReviewExistingTicket(View):
 
 class UpdateReview(View):
     form = ReviewForm
-    template = 'reviews/review_form.html'
+    template = "reviews/review_form.html"
 
     def get(self, request, review_id=None):
         review = Review.objects.get(id=review_id)
@@ -199,7 +226,7 @@ class UpdateReview(View):
 
     def post(self, request, review_id=None):
         review = Review.objects.get(id=review_id)
-        form = self.form_class(request.POST, instance=review)
+        form = self.form(request.POST, instance=review)
         if form.is_valid():
             form.save()
             return redirect(settings.LOGIN_REDIRECT_URL)
@@ -213,7 +240,7 @@ class UpdateReview(View):
 
 
 class DeleteReview(View):
-    template = 'reviews/delete_reviews.html'
+    template = "reviews/delete_reviews.html"
 
     def get(self, request, review_id=None):
         review = Review.objects.get(id=review_id)
