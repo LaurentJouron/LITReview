@@ -1,15 +1,15 @@
-<div class='post_reviews'>
-    <div class='post_reviews__date'>
+<div class='review_snippet'>
+    <div class='review_snippet__date'>
         <p>Vous avez publié une review</p>
         <p>{{ review.time_created }}</p>
     </div>
-    <h3 class='post_reviews__title'>{{ review.headline }} - {{ review.rating }}</h3>
+    <h3 class='review_snippet__title'>{{ review.headline }} - {{ review.rating }}</h3>
     <div>
-        <p class='post_reviews__description'>{{ review.body }}</p>
+        <p class='review_snippet__description'>{{ review.body }}</p>
         {% include 'reviews/ticket_snippet.html' %}
     </div>
         {% if edit_review %}
-            <div class='post_reviews__footer'>
+            <div class='review_snippet__footer'>
                 <a href="{% url 'update_review' review.id %}"><button class='btn post_modify__btn'>Modifier</button></a>
                 <a href="{% url 'delete_review' review.id %}"><button class='btn post_delete__btn'>Supprimer</button></a>
             </div>

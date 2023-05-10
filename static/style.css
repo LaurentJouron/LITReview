@@ -76,8 +76,8 @@ h2 {
     width: 100%;
     text-align: center;
 }
-.login__signin h2 {
-    padding-bottom: 20px;
+.login_signin__title {
+    padding-bottom: 15px;
 }
 .login__signin p {
     padding-bottom: 20px;
@@ -97,13 +97,12 @@ h2 {
 }
 .login_signin__message {
     font-size: 20px;
-
 }
 /*#########/!\ end login.html /!\#########*/
 
 
 /*#########/!\ signup.html /!\#########*/
-.register {
+.signup_register {
     max-width: 900px;
     margin: 0 auto;
     height: 250px;
@@ -130,14 +129,14 @@ h2 {
 
 
 /*#########/!\ subscription.html /!\#########*/
-.followers {
+.subrcitpion_followers {
     max-width: 900px;
     margin: 0 auto;
     padding: 10px;
     display:flex;
     flex-direction: column;
 }
-.users_follows {
+.subrcitpion_follows__users {
     height: 180px;
     margin: 0 auto;
     padding: 30px;
@@ -170,7 +169,7 @@ h2 {
 .subscription li {
     list-style-type: none;
 }
-.textbox_subscription_username {
+.subscription_textbox_username {
     width: 500px;
     margin-right: 40px;
 }
@@ -180,7 +179,7 @@ h2 {
     width: 100px;
     padding-left: 10px;
 }
-.subscribers {
+.subscription_subscribers {
     min-height: 200px;
     width: 800px;
     margin: 0 auto;
@@ -188,7 +187,10 @@ h2 {
     padding-bottom: 10px;
     margin-top: 10px;
 }
-.subscribers__username {
+.subscription_subscribers__title{
+    text-align: center;
+}
+.subscription_subscribers__username {
     width: 720px;
     height: 35px;
     font-weight: 600;
@@ -243,14 +245,6 @@ h2 {
     margin: 0 auto;
     margin-bottom: 15px;
 }
-.post {
-    width: 100%;
-    height: auto;
-    margin: 0 auto;
-    border: black 2px solid;
-    padding: 10px;
-    margin-bottom: 15px;
-}
 /*#########/!\ end home.html /!\#########*/
 
 
@@ -268,16 +262,16 @@ h2 {
     text-align: center;
 }
 .review_form__create {
-    max-width: 750px;
-    height: 770px;
+    max-width: 730px;
+    height: 760px;
     margin: 0 auto;
     margin-top: 20px;  
     padding: 10px;
 }
 .book_article, .critical_article {
-    max-width: 730px;
+    max-width: 740px;
     margin: 0 auto;
-    height: 370px;
+    height: 380px;
     padding: 10px;
     border: 1px black solid;
 }
@@ -288,7 +282,7 @@ h2 {
     width: 680px;
     height: 30px;
     font-size: 18px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 .review_form__decription, .review_form_critical__description, textarea {
     width: 680px;
@@ -313,19 +307,34 @@ h2 {
 .review_form__btn {
     margin-left: 80%;
     margin-top: 8px;
-
 }
 /*#########/!\ end review_form.html /!\#########*/
 
 
 /*#########/!\ review_snippet.html /!\#########*/
-.post_reviews__date {
-    margin-bottom: 15px;
+.review_snippet {
+    max-width: 600px;
+    margin: 0 auto;
+    height: auto;
+    padding: 10px;
+    border: 2px solid black;
+    margin-bottom: 10px;
+}
+.review_snippet__date{
     display: flex;
     justify-content: space-between;
 }
-.post_reviews__title, .post_reviews__description {
-    margin-bottom: 20px;
+.review_snippet__title{
+    max-width: 600px;
+    margin: 0 auto;
+    height: auto;
+    padding: 10px;
+}
+.review_snippet__description {
+    max-width: 600px;
+    margin: 0 auto;
+    height: auto;
+    padding: 10px;
 }
 /*#########/!\ end review_snippet.html /!\#########*/
 

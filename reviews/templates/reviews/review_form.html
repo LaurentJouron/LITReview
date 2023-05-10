@@ -30,20 +30,21 @@
 
 
             <div class="critical_article">
-                    <p>Critique</p>
-                        <h4 class="review_form_critical_label__title">{{ review_form.headline.label }}</h4>
-                        <element class="review_form_critical__title">{{ review_form.headline }}</element>
+                <p>Critique</p>
+                <h4 class="review_form_critical_label__title">{{ review_form.headline.label }}</h4>
+                <element class="review_form_critical__title">{{ review_form.headline }}</element>
 
-                        <h4 class="review_form_critical_label__rating">{{ review_form.rating.label }}</h4>
-                        <element class='review_form_critical__rating'>
-                            {% for value in review_form.rating %}
-                                <p>{{ value }}</p>
-                            {% endfor %}
-                        </element>
+                <h4 class="review_form_critical_label__rating">{{ review_form.rating.label }}</h4>
+                <element class='review_form_critical__rating'>
+                    {% for value in review_form.rating %}
+                        <p>{{ value }}</p>
+                    {% endfor %}
+                </element>
 
-                        <h4 class="review_form_critical_label__description">{{ review_form.body.label }}</h4>
-                        <div class="review_form_critical__description">{{ review_form.body }}</div>
-                        <button class='btn review_form__btn' type="submit">Envoyer</button>
+                <h4 class="review_form_critical_label__description">{{ review_form.body.label }}</h4>
+                
+                <div class="review_form_critical__description">{{ review_form.body }}</div>
+                    <button class='btn review_form__btn' type="submit">Envoyer</button>
                 </div>
             </div>
         </form>

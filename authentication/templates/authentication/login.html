@@ -6,16 +6,16 @@
     <section class="login">
         <div class="login__signup">
             <h2>Inscrivez-vous maintenant</h2>
-            <a href="{% url 'signup' %}"><button class="btn signup_btn" type='button'>S'inscrire</button></a>
+            <a href="{% url 'signup' %}"><button class="btn login_signup__btn" type='button'>S'inscrire</button></a>
         </div>
         <div class="login__signin">
-            <h2>Connectez-vous</h2>
+            <h2 class="login_signin__title">Connectez-vous</h2>
             <p>{{ message }}</p>
             <form method="post">
                 {{ form.as_p }}
                 {% csrf_token %}
                 <div class="login_btn">
-                    <button class="btn signin__btn" type="submit">Se connecter</button>
+                    <button class="btn login_signin__btn" type="submit">Se connecter</button>
                 </div>
             </form>
         </div>

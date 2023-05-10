@@ -69,7 +69,7 @@ class SubscriptionForm(forms.Form):
         label=False,
         widget=forms.TextInput(
             attrs={
-                'class': 'textbox textbox_subscription_username',
+                'class': 'textbox subscription_textbox_username',
                 'placeholder': 'Nom d\'utilisateur',
             }
         ),
