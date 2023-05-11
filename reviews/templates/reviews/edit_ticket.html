@@ -1,15 +1,13 @@
 {% extends 'base.html' %}
 
-{% block title %}Voir vos propres posts{% endblock title %}
-
 {% block content %}
-    <h2>Vos posts</h2>
+    <h2 class="edit_ticket_title">Vos posts</h2>
     <form method="post">
         {{ edit_form.as_p }}
         {% csrf_token %}
         <button type="submit" >Modifier</button>
     </form>
-    <hr>
+
     <form method="post">
         {{ delete_form.as_p }}
         {% csrf_token %}

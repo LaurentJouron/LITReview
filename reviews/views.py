@@ -240,7 +240,7 @@ class UpdateReview(View):
 
 
 class DeleteReview(View):
-    template = "reviews/delete_reviews.html"
+    template = "reviews/delete.html"
 
     def get(self, request, review_id=None):
         review = Review.objects.get(id=review_id)

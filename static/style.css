@@ -226,6 +226,9 @@ h2 {
 
 
 /*#########/!\ edit_ticket.html /!\#########*/
+.edit_ticket_title {
+    text-align: center;
+}
 /*#########/!\ end edit_ticket.html /!\#########*/
 
 
@@ -313,7 +316,7 @@ h2 {
 
 /*#########/!\ review_snippet.html /!\#########*/
 .review_snippet {
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
     height: auto;
     padding: 10px;
@@ -325,13 +328,13 @@ h2 {
     justify-content: space-between;
 }
 .review_snippet__title{
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
     height: auto;
     padding: 10px;
 }
 .review_snippet__description {
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
     height: auto;
     padding: 10px;
@@ -340,6 +343,15 @@ h2 {
 
 
 /*#########/!\ ticket_form.html /!\#########*/
+.ticket {
+    max-width: 800px;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 20px;  
+    padding: 10px;
+    border: 2px black solid;
+    margin-bottom: 10px;
+}
 .ticket_form {
     max-width: 800px;
     height: 400px;
@@ -348,7 +360,7 @@ h2 {
     padding: 10px;
 }
 .ticket_form__items {
-    max-width: 700px;
+    max-width: 800px;
     margin: 0 auto;
     margin-top: 10px;  
     padding: 10px;
@@ -369,7 +381,7 @@ h2 {
     font-size: 18px;
     margin-bottom: 10px;
 }
-.ticket_form__description textarea{
+.ticket_form__description textarea {
     width: 680px;
 }
 .ticket_form_label_description, .ticket_form_label_title, .ticket_form_label_image {
@@ -386,22 +398,18 @@ h2 {
 
 
 /*#########/!\ ticket_snippet.html /!\#########*/
-.post_snippet {
-    width: 100%;
+.ticket_snippet {
     height: auto;
     margin: 0 auto;
-    border: black 1px solid;
     padding: 10px;
 }
-.post_snippet__user {
+.ticket_snippet__user {
     margin-bottom: 15px;
     display: flex;
     justify-content: space-between;
 }
-.post_snippet__title, .post_snippet__description {
-    margin-bottom: 20px;
-}
-.post_snippet__title a {
-    text-decoration: none;
+.ticket_snippet__title, .post_snippet__description {
+    height: auto;
+    margin-bottom: 10px;
 }
 /*#########/!\ end ticket_snippet.html /!\#########*/

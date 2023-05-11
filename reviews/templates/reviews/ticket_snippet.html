@@ -1,29 +1,31 @@
-<div class='post_snippet'>
-    <div class='post_snippet__user'>
-        {% if ticket.user.username == user.username %}
-            <p>Vous avez demandé une critique</p>
-        {% else %}
-            <p>{{ ticket.user }} a demandé une critique</p>
-        {% endif %}
-        <p>{{ ticket.time_created }}</p>
+<div class="ticket">
+    <div class='ticket_snippet'>
+        <div class='ticket_snippet__user'>
+            {% if ticket.user.username == user.username %}
+                <p>Vous avez demandé une critique</p>
+            {% else %}
+                <p>{{ ticket.user }} a demandé une critique</p>
+            {% endif %}
+            <p>{{ ticket.time_created }}</p>
+        </div>
+    
+        <h3 class='ticket_snippet__title'>{{ ticket.title }}</h3>
+        <div class='ticket_snippet__detail'>
+            <p class='post_snippet__description'>{{ ticket.description }}</p>
+            {% if ticket.image.url is not None %}
+                <p class='ticket_snippet__image'>
+                    <img src='{{ ticket.image.url }}'>
+                </p>
+            {% endif %}
+        </div>
+            {% if edit_ticket %}
+                <div class='ticket_snippet__footer'>
+                    <a href="{% url 'update_ticket' ticket.id %}"><button class='btn ticket_snippet__btn'>Modifier</button></a>
+                    <a href="{% url 'delete_ticket' ticket.id %}"><button class='btn ticket_snippet__btn'>Supprimer</button></a>
+                </div>
+            {% elif create_review and not ticket.has_review %}
+                <div class='ticket_snippet__footer'>
+                    <a href="{% url 'create_review_selected_ticket' ticket.id %}"><button class='btn create_review_btn'>Créer une critique</button></a>            </div>
+            {% endif %}
     </div>
-
-    <h3 class='post_snippet__title'>{{ ticket.title }}</h3>
-    <div class='post_snippet__detail'>
-        <p class='post_snippet__description'>{{ ticket.description }}</p>
-        {% if ticket.image.url is not None %}
-            <p class='post_snippet__image'>
-                <img src='{{ ticket.image.url }}'>
-            </p>
-        {% endif %}
-    </div>
-        {% if edit_ticket %}
-            <div class='post_snippet__footer'>
-                <a href="{% url 'update_ticket' ticket.id %}"><button class='btn post__btn'>Modifier</button></a>
-                <a href="{% url 'delete_ticket' ticket.id %}"><button class='btn post__btn'>Supprimer</button></a>
-            </div>
-        {% elif create_review and not ticket.has_review %}
-            <div class='post_snippet__footer'>
-                <a href="{% url 'create_review_selected_ticket' ticket.id %}"><button class='btn create_review_btn'>Créer une critique</button></a>            </div>
-        {% endif %}
 </div>
