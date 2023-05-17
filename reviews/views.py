@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
 from reviews.models import Ticket, Review
-from reviews.forms import DeleteTicketForm, TicketForm, ReviewForm, EditForm
+from reviews.forms import TicketForm, ReviewForm
 from authentication.models import UserFollows
 
 
@@ -71,7 +71,6 @@ class CreateTicket(View):
         return render(request, self.template, context=context)
 
 
-@login_required
 def ticket_upload(request):
     """
     This function gives the possibility to create a ticket, provided

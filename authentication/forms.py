@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from authentication.models import User
+from .models import User
 
 
 class LoginForm(forms.Form):
@@ -9,8 +9,8 @@ class LoginForm(forms.Form):
         label=False,
         widget=forms.TextInput(
             attrs={
-                'class': 'textbox textbox_login_username',
-                'placeholder': 'Nom d\'utilisateur',
+                "class": "textbox textbox_login_username",
+                "placeholder": "Nom d'utilisateur",
             }
         ),
     )
@@ -19,8 +19,8 @@ class LoginForm(forms.Form):
         label=False,
         widget=forms.PasswordInput(
             attrs={
-                'class': 'textbox textbox_login_password',
-                'placeholder': 'Mot de passe',
+                "class": "textbox textbox_login_password",
+                "placeholder": "Mot de passe",
             }
         ),
     )
@@ -31,8 +31,8 @@ class SignupForm(UserCreationForm):
         label=False,
         widget=forms.PasswordInput(
             attrs={
-                'class': 'textbox textbox_signup_username',
-                'placeholder': "Mot de passe",
+                "class": "textbox textbox_signup_username",
+                "placeholder": "Mot de passe",
             }
         ),
     )
@@ -41,23 +41,23 @@ class SignupForm(UserCreationForm):
         label=False,
         widget=forms.PasswordInput(
             attrs={
-                'class': 'textbox textbox_signup_password',
-                'placeholder': "Confirmer mot de passe",
+                "class": "textbox textbox_signup_password",
+                "placeholder": "Confirmer mot de passe",
             }
         ),
     )
 
     class Meta(UserCreationForm.Meta):
         model = User
-        fields = ('username', 'password1', 'password2')
+        fields = ("username", "password1", "password2")
         help_texts = {"username": None}
         labels = {"username": ""}
 
         widgets = {
-            'username': forms.TextInput(
+            "username": forms.TextInput(
                 attrs={
-                    'class': 'textbox textbox_signup_username',
-                    'placeholder': "Nom d'utilisateur",
+                    "class": "textbox textbox_signup_username",
+                    "placeholder": "Nom d'utilisateur",
                 }
             ),
         }
@@ -69,8 +69,8 @@ class SubscriptionForm(forms.Form):
         label=False,
         widget=forms.TextInput(
             attrs={
-                'class': 'textbox subscription_textbox_username',
-                'placeholder': 'Nom d\'utilisateur',
+                "class": "textbox subscription_textbox_username",
+                "placeholder": "Nom d'utilisateur",
             }
         ),
     )

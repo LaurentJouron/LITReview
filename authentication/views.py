@@ -3,8 +3,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.views.generic import View
 
-from authentication.forms import LoginForm, SignupForm, SubscriptionForm
-from authentication.models import UserFollows, User
+from . import forms
+from . import models
 
 
 class SignupView(View):
@@ -13,8 +13,8 @@ class SignupView(View):
     At the validation, the redirection brings to the homepage of the site.
     """
 
-    template = ('authentication/signup.html',)
-    form = SignupForm
+    template = 'authentication/signup.html'
+    form = forms.SignupForm
 
     def get(self, request):
         form = self.form()
@@ -28,7 +28,7 @@ class SignupView(View):
             login(request, user)
             return redirect(settings.LOGIN_REDIRECT_URL)
         context = {'form': form}
-        return render(request, self.template_name, context=context)
+        return render(request, self.template, context=context)
 
 
 class LoginView(View):
@@ -37,8 +37,8 @@ class LoginView(View):
     user is registered.
     """
 
-    form = LoginForm
     template = 'authentication/login.html'
+    form = forms.LoginForm
 
     def get(self, request):
         form = self.form()
@@ -87,18 +87,18 @@ class SubscriptionView(View):
     """
 
     template = 'authentication/subscription.html'
-    form = SubscriptionForm
+    form = forms.SubscriptionForm
 
     def get(self, request):
         form = self.form()
         current_user = request.user
-        subscriptions, subscribers = [], []
-        for subscription in UserFollows.objects.all():
+        subscriptions = []
+        subscribers = []
+        for subscription in models.UserFollows.objects.all():
             if subscription.user == current_user:
                 subscriptions.append(subscription)
             if subscription.followed_user == current_user:
-                subscribers.append(subscription)
-
+                subscribers.append(subscription.user)
         context = {
             'form': form,
             'current_user': current_user,
@@ -113,13 +113,13 @@ class SubscriptionView(View):
 
     def post(self, request):
         form = self.form(request.POST)
-        users = User.objects.all()
+        users = models.User.objects.all()
         if form.is_valid():
             entry = request.POST['username']
-            followed_user = User.objects.get(username=entry)
+            followed_user = models.User.objects.get(username=entry)
             for user in users:
                 if user.username == entry:
-                    UserFollows.objects.create(
+                    models.UserFollows.objects.create(
                         user=request.user, followed_user=followed_user
                     )
             return redirect('subscriptions')
@@ -137,10 +137,10 @@ class Unsubscribe(View):
     selected users.
     """
 
-    template = ('authentication/unsubscribe.html',)
+    template = 'authentication/unsubscribe.html'
 
     def get(self, request, sub_id=None):
-        subscription = UserFollows.objects.get(id=sub_id)
+        subscription = models.UserFollows.objects.get(id=sub_id)
         if subscription.user == request.user:
             context = {'followed_user': subscription.followed_user}
             return render(
@@ -150,7 +150,7 @@ class Unsubscribe(View):
             )
 
     def post(self, request, sub_id=None):
-        subscription = UserFollows.objects.get(id=sub_id)
+        subscription = models.UserFollows.objects.get(id=sub_id)
         if subscription.user == request.user:
             subscription.delete()
             return redirect('subscriptions')

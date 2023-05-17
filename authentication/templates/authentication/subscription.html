@@ -33,11 +33,11 @@
         <section class="subscription_subscribers">
             <h2 class="subscription_subscribers__title">Abonnés</h2>
             <ul>
-                {% for user in subscribers %}
+                {% for subscriber in subscribers %}
                     {% if not forloop.first %}
                         <hr>
                     {% endif %}
-                    <li class="subscription_subscribers__username">{{ user }}</li>
+                    <li class="subscription_subscribers__username">{{ subscriber }}</li>
                 {% empty %}
                     <p>Aucun abonné</p>
                 {% endfor %}

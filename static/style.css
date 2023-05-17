@@ -252,6 +252,14 @@ h2 {
 
 
 /*#########/!\ posts_ticket.html /!\#########*/
+.post_ticket_title {
+    margin: 0 auto;
+    height: auto;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+
+}
 /*#########/!\ end posts_ticket.html /!\#########*/
 
 

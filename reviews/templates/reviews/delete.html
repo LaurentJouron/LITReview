@@ -1,18 +1,12 @@
-{% extends 'base.html' %}
-
-{% block title %}Supprimer{% endblock title %}
-
 {% block content%}
     <section>
         {% if content_type == 'TICKET' %}
-            <h2>Supprimer votre demande</h2>
             {% include 'reviews/edit_ticket.html' %}
-
+            <h2 class="delete__title">Supprimer votre demande</h2>
         {% elif content_type == 'REVIEW' %}
-            <h2>Supprimer votre critique</h2>
             {% include 'reviews/edit_ticket.html' with ticket=review.ticket %}
+            <h2 class="delete__title">Supprimer votre critique</h2>
         {% endif %}
-
         <form action="" method="post" enctype='multipart/form-data'>
             {% csrf_token %}
             <a href="{% url 'posts' %}"><button class='btn back_submit_btn' type='button'>Retour</button></a>
