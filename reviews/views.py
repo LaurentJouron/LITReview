@@ -18,7 +18,6 @@ class FluxView(View):
         for user in UserFollows.objects.all():
             if user.followed_user == request.user:
                 subscribers.append(user.user)
-
         tickets = Ticket.objects.filter(
             user=request.user
         ) | Ticket.objects.filter(user__in=subscribers)
