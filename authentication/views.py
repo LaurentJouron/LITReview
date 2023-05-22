@@ -15,10 +15,6 @@ class SignupView(View):
 
     template = 'authentication/signup.html'
     form = forms.SignupForm
-    model = models.User
-
-    def __str__(self):
-        print(f'{self.username}'.lower())
 
     def get(self, request):
         form = self.form()
@@ -28,12 +24,11 @@ class SignupView(View):
     def post(self, request):
         form = self.form(request.POST)
         if form.is_valid():
-            print(self.model)
-            print(self.form.Meta.widgets)
+            print(form.data["username"].lower())
 
-            # user = form.save()
-            # login(request, user)
-            # return redirect(settings.LOGIN_REDIRECT_URL)
+            user = form.save()
+            login(request, user)
+            return redirect(settings.LOGIN_REDIRECT_URL)
         context = {'form': form}
         return render(request, self.template, context=context)
 

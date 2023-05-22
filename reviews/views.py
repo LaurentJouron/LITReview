@@ -4,6 +4,7 @@ from itertools import chain
 from django.views.generic import View
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from itertools import chain
 
 from reviews.models import Ticket, Review
 from reviews.forms import TicketForm, ReviewForm
@@ -45,7 +46,11 @@ class PostView(View):
         reviews = reviews.annotate(content_type=Value('REVIEW', CharField()))
 
         posts = chain(tickets, reviews)
-        posts = sorted(posts, key=lambda post: post.time_created, reverse=True)
+        posts = sorted(
+            chain(tickets, reviews),
+            key=lambda post: post.time_created,
+            reverse=True,
+        )
         context = {'posts': posts}
         return render(request, self.template, context=context)
 

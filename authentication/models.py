@@ -4,6 +4,10 @@ from django.db import models
 
 
 class User(AbstractUser):
+    @property
+    def username_lower(self):
+        return self.username.lower()
+
     def __str__(self):
         return f'{self.username}'
 
@@ -20,11 +24,14 @@ class UserFollows(models.Model):
         related_name='followed_by',
     )
 
-    def __str__(self):
-        return f'{self.followed_user.username}'
-
     class Meta:
         unique_together = (
             'user',
             'followed_user',
+        )
+
+    def __str__(self) -> str:
+        return (
+            f"{self.user.username.lower()} follows "
+            + f"{self.followed_user.username.lower()}"
         )
