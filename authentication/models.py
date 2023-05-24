@@ -4,6 +4,10 @@ from django.db import models
 
 
 class User(AbstractUser):
+    def save(self, *args, **kwargs):
+        self.username = self.username.lower()
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return f'{self.username}'
 

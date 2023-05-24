@@ -25,14 +25,8 @@ class SignupView(View):
     def post(self, request):
         form = self.form(request.POST)
         if form.is_valid():
-            print(form.data["username"].lower())
-            user = form.save(commit=False)
-            print(user.username.lower())
-            user = models.User()
-            print(user)
-
-            # user = form.save()
-            # login(request, user)
+            user = form.save()
+            login(request, user)
             return redirect(settings.LOGIN_REDIRECT_URL)
         context = {'form': form}
         return render(request, self.template, context=context)
