@@ -3,8 +3,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.views.generic import View
 
-from . import forms
-from . import models
+from .forms import SignupForm, LoginForm, SubscriptionForm
+from .models import User, UserFollows
 
 
 class SignupView(View):
@@ -14,13 +14,12 @@ class SignupView(View):
     """
 
     template = 'authentication/signup.html'
-    form = forms.SignupForm
-    model = models.User()
+    form = SignupForm
+    model = User()
 
     def get(self, request):
         form = self.form()
-        context = {'form': form}
-        return render(request, self.template, context=context)
+        return render(request, self.template, {'form': form})
 
     def post(self, request):
         form = self.form(request.POST)
@@ -28,8 +27,7 @@ class SignupView(View):
             user = form.save()
             login(request, user)
             return redirect(settings.LOGIN_REDIRECT_URL)
-        context = {'form': form}
-        return render(request, self.template, context=context)
+        return render(request, self.template, {'form': form})
 
 
 class LoginView(View):
@@ -39,22 +37,17 @@ class LoginView(View):
     """
 
     template = 'authentication/login.html'
-    form = forms.LoginForm
+    form = LoginForm
 
     def get(self, request):
         form = self.form()
-        context = {'form': form}
-        return render(
-            request,
-            self.template,
-            context=context,
-        )
+        return render(request, self.template, {'form': form})
 
     def post(self, request):
         form = self.form(request.POST)
         if form.is_valid():
             user = authenticate(
-                username=form.cleaned_data['username'],
+                username=form.cleaned_data['username'].lower(),
                 password=form.cleaned_data['password'],
             )
             if user is not None:
@@ -86,14 +79,14 @@ class SubscriptionView(View):
     """
 
     template = 'authentication/subscription.html'
-    form = forms.SubscriptionForm
+    form = SubscriptionForm
 
     def get(self, request):
         form = self.form()
         current_user = request.user
         subscriptions = []
         subscribers = []
-        for subscription in models.UserFollows.objects.all():
+        for subscription in UserFollows.objects.all():
             if subscription.user == current_user:
                 subscriptions.append(subscription)
             if subscription.followed_user == current_user:
@@ -112,22 +105,20 @@ class SubscriptionView(View):
 
     def post(self, request):
         form = self.form(request.POST)
-        users = models.User.objects.all()
+        users = User.objects.all()
         if form.is_valid():
-            entry = request.POST['username']
-            followed_user = models.User.objects.get(username=entry)
+            entry = request.POST['username'].lower()
+            followed_user = User.objects.get(username=entry)
             for user in users:
                 if user.username == entry:
-                    models.UserFollows.objects.create(
-                        user=request.user, followed_user=followed_user
-                    )
+                    if followed_user != request.user:
+                        print(followed_user)
+                        print(request.user)
+                        UserFollows.objects.create(
+                            user=request.user, followed_user=followed_user
+                        )
             return redirect('subscriptions')
-        context = {'form': form}
-        return render(
-            request,
-            self.template,
-            context=context,
-        )
+        return render(request, self.template, {'form': form})
 
 
 class Unsubscribe(View):
@@ -139,7 +130,7 @@ class Unsubscribe(View):
     template = 'authentication/unsubscribe.html'
 
     def get(self, request, sub_id=None):
-        subscription = models.UserFollows.objects.get(id=sub_id)
+        subscription = UserFollows.objects.get(id=sub_id)
         if subscription.user == request.user:
             context = {'followed_user': subscription.followed_user}
             return render(
@@ -149,7 +140,7 @@ class Unsubscribe(View):
             )
 
     def post(self, request, sub_id=None):
-        subscription = models.UserFollows.objects.get(id=sub_id)
+        subscription = UserFollows.objects.get(id=sub_id)
         if subscription.user == request.user:
             subscription.delete()
             return redirect('subscriptions')

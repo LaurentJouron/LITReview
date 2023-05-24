@@ -1,23 +1,24 @@
-from django import forms
+from django.forms import Form, TextInput, CharField, PasswordInput
 from django.contrib.auth.forms import UserCreationForm
+
 from .models import User
 
 
-class LoginForm(forms.Form):
-    username = forms.CharField(
+class LoginForm(Form):
+    username = CharField(
         max_length=50,
         label=False,
-        widget=forms.TextInput(
+        widget=TextInput(
             attrs={
                 "class": "textbox textbox_login_username",
                 "placeholder": "Nom d'utilisateur",
             }
         ),
     )
-    password = forms.CharField(
+    password = CharField(
         max_length=50,
         label=False,
-        widget=forms.PasswordInput(
+        widget=PasswordInput(
             attrs={
                 "class": "textbox textbox_login_password",
                 "placeholder": "Mot de passe",
@@ -27,9 +28,9 @@ class LoginForm(forms.Form):
 
 
 class SignupForm(UserCreationForm):
-    password1 = forms.CharField(
+    password1 = CharField(
         label=False,
-        widget=forms.PasswordInput(
+        widget=PasswordInput(
             attrs={
                 "class": "textbox textbox_signup_username",
                 "placeholder": "Mot de passe",
@@ -37,9 +38,9 @@ class SignupForm(UserCreationForm):
         ),
     )
 
-    password2 = forms.CharField(
+    password2 = CharField(
         label=False,
-        widget=forms.PasswordInput(
+        widget=PasswordInput(
             attrs={
                 "class": "textbox textbox_signup_password",
                 "placeholder": "Confirmer mot de passe",
@@ -54,7 +55,7 @@ class SignupForm(UserCreationForm):
         labels = {"username": ""}
 
         widgets = {
-            "username": forms.TextInput(
+            "username": TextInput(
                 attrs={
                     "class": "textbox textbox_signup_username",
                     "placeholder": "Nom d'utilisateur",
@@ -63,11 +64,11 @@ class SignupForm(UserCreationForm):
         }
 
 
-class SubscriptionForm(forms.Form):
-    username = forms.CharField(
+class SubscriptionForm(Form):
+    username = CharField(
         max_length=50,
         label=False,
-        widget=forms.TextInput(
+        widget=TextInput(
             attrs={
                 "class": "textbox subscription_textbox_username",
                 "placeholder": "Nom d'utilisateur",

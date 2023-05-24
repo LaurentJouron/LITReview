@@ -41,8 +41,8 @@ class Ticket(models.Model):
         image.save(self.image.path)
 
     def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
         self.resize_image()
+        super().save(*args, **kwargs)
 
     def __str__(self) -> str:
         return f"{self.title} - by {self.user}"

@@ -1,6 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
-from django.db import models
+from django.db.models import Model, ForeignKey, CASCADE
 
 
 class User(AbstractUser):
@@ -9,18 +9,18 @@ class User(AbstractUser):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f'{self.username}'
+        return f'{self.username.capitalize()}'
 
 
-class UserFollows(models.Model):
-    user = models.ForeignKey(
+class UserFollows(Model):
+    user = ForeignKey(
         to=settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
+        on_delete=CASCADE,
         related_name='following',
     )
-    followed_user = models.ForeignKey(
+    followed_user = ForeignKey(
         to=settings.AUTH_USER_MODEL,
-        on_delete=models.CASCADE,
+        on_delete=CASCADE,
         related_name='followed_by',
     )
 
@@ -28,10 +28,4 @@ class UserFollows(models.Model):
         unique_together = (
             'user',
             'followed_user',
-        )
-
-    def __str__(self) -> str:
-        return (
-            f"{self.user.username.lower()} follows "
-            + f"{self.followed_user.username.lower()}"
         )

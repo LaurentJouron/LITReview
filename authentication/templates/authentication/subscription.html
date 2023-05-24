@@ -35,7 +35,6 @@
             <ul>
                 {% for subscriber in subscribers %}
                     {% if not forloop.first %}
-                        <hr>
                     {% endif %}
                     <li class="subscription_subscribers__username">{{ subscriber }}</li>
                 {% empty %}
