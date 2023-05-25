@@ -2,15 +2,17 @@
     <section>
         {% if content_type == 'TICKET' %}
             {% include 'reviews/edit_ticket.html' %}
-            <h2 class="delete__title">Supprimer votre demande</h2>
+                <h2 class="delete__title">Supprimer votre demande sur {{ review.ticket.title }}</h2>
         {% elif content_type == 'REVIEW' %}
             {% include 'reviews/edit_ticket.html' with ticket=review.ticket %}
-            <h2 class="delete__title">Supprimer votre critique</h2>
+                <h2 class="delete__title">Supprimer votre critique sur {{ review.ticket.title }}</h2>
         {% endif %}
-        <form action="" method="post" enctype='multipart/form-data'>
+        <div class="delete_container">
+            <form action="" method="post" enctype='multipart/form-data'>
             {% csrf_token %}
-            <a href="{% url 'posts' %}"><button class='btn back_submit_btn' type='button'>Retour</button></a>
-            <input class='btn delete_submit_btn' type="submit" value="Supprimer">
-        </form>
+                <a href="{% url 'posts' %}"><button class='btn back_submit_btn' type='button'>Retour</button></a>
+                <input class='btn delete_submit_btn' type="submit" value="Supprimer">
+            </form>
+        </div>
     </section>
 {% endblock %}

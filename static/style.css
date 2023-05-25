@@ -222,6 +222,16 @@ h2 {
 
 
 /*#########/!\ delete.html /!\#########*/
+.delete_container {
+    max-width: 400;
+    margin: 0 auto;
+    height: 400px;
+    padding: 10px;
+    background: wheat;
+    border: 2px black solid;
+    border-radius: 5px;
+    display: flex;
+}
 /*#########/!\ end delete.html /!\#########*/
 
 
@@ -258,7 +268,6 @@ h2 {
     padding: 10px;
     display: flex;
     justify-content: center;
-
 }
 /*#########/!\ end posts_ticket.html /!\#########*/
 

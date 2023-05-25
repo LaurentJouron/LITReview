@@ -9,8 +9,8 @@ from .models import User, UserFollows
 
 class SignupView(View):
     """
-    This class is used to create a user account on the first login.
-    At the validation, the redirection brings to the homepage of the site.
+    Create a user account on the first login.
+    Upon validation, the redirect sends to the home page.
     """
 
     template = 'authentication/signup.html'
@@ -32,8 +32,7 @@ class SignupView(View):
 
 class LoginView(View):
     """
-    This class is used to connect to all connections after the
-    user is registered.
+    Log in to the site after the user have created an account.
     """
 
     template = 'authentication/login.html'
@@ -65,8 +64,7 @@ class LoginView(View):
 
 def logout_user(request):
     """
-    This feature allows a user to log out and return to the authentication
-    home page.
+    Allows the user to log out and return to the authentication page.
     """
     logout(request)
     return redirect(settings.LOGOUT_REDIRECT_URL)
@@ -74,8 +72,7 @@ def logout_user(request):
 
 class SubscriptionView(View):
     """
-    This class allows the logged-in user to follow other users and
-    see the tickets of those they follow.
+    Tracks other users to see which tickets they have written.
     """
 
     template = 'authentication/subscription.html'
@@ -123,8 +120,7 @@ class SubscriptionView(View):
 
 class Unsubscribe(View):
     """
-    This class allows the logged in user to stop following the
-    selected users.
+    Stops tracking selected users.
     """
 
     template = 'authentication/unsubscribe.html'

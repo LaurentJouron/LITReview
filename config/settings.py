@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "authentication.apps.AuthenticationConfig",
     "reviews.apps.ReviewsConfig",
+    "reviews.templatetags.reviews_extras",
 ]
 
 MIDDLEWARE = [

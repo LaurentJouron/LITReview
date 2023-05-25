@@ -3,12 +3,16 @@ from django.conf import settings
 from itertools import chain
 from django.views.generic import View
 from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
 from itertools import chain
 
 from reviews.models import Ticket, Review
 from reviews.forms import TicketForm, ReviewForm
 from authentication.models import UserFollows
+
+
+# def stars(rating, max=5):
+#     """Turns a note into a chain of stars."""
+#     return " ".join("★" if i <= rating else "✩" for i in range(1, max + 1))
 
 
 class FluxView(View):
@@ -77,7 +81,7 @@ class CreateTicket(View):
 
 def ticket_upload(request):
     """
-    This function gives the possibility to create a ticket, provided
+    Gives the possibility to create a ticket, provided
     that it is authenticated and entitled to do so. It records the ID
     of the ticket creator. The function uses the creation of the TicketForm
     form of the forms.py file and ticket_update.html of templates/reviews.
