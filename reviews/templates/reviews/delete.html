@@ -2,10 +2,10 @@
     <section>
         {% if content_type == 'TICKET' %}
             {% include 'reviews/edit_ticket.html' %}
-                <h2 class="delete__title">Supprimer votre demande sur {{ review.ticket.title }}</h2>
+                <h2 class="delete__title">Supprimer votre demande</h2>
         {% elif content_type == 'REVIEW' %}
             {% include 'reviews/edit_ticket.html' with ticket=review.ticket %}
-                <h2 class="delete__title">Supprimer votre critique sur {{ review.ticket.title }}</h2>
+                <h2 class="delete__title">Supprimer votre critique</h2>
         {% endif %}
         <div class="delete_container">
             <form action="" method="post" enctype='multipart/form-data'>
