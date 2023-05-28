@@ -1,12 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content%}
+    <!-- Section to unsubscribe from a user -->
     <section>
-        <h2 class="unsubscribe__title">Arrêter de suivre {{ followed_user }} ?</h2>
+        <!-- Title of the section with the name of the followed user -->
+        <h2 class="unsubscribe__title">Arrêter de suivre  {{ followed_user }}?</h2>
+        <!-- Form to unsubscribe from a user -->
         <form action="" method="post" enctype='multipart/form-data'>
             {% csrf_token %}
+            <!-- CSRF token for security -->
+            
+            <!-- Div for the back and unsubscribe buttons -->
             <div class="btn unsubscribe_btn">
+                <!-- Button to go back to the subscriptions list -->
                 <a href="{% url 'subscriptions' %}"><button class="btn" type='button'>Retour</button></a>
+                <!-- Button to unsubscribe from the user -->
                 <input class="btn unsubscribe_input" type="submit" value="Ne plus suivre">
             </div>
         </form>

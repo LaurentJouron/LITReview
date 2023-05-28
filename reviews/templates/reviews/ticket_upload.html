@@ -4,12 +4,19 @@
 
 {% block content %}
     <div class="upload_ticket">
+        <!-- Heading for creating a ticket -->
         <h2>Créer un ticket</h2>
+        
+        <!-- Form for creating a ticket -->
         <form method="post" enctype="multipart/form-data">
+            <!-- Render the form fields as paragraphs -->
             {{ ticket_form.as_p }}
+            
+            <!-- Add the CSRF token -->
             {% csrf_token %}
 
             <div class="div upload_ticket__btn">
+                <!-- Button to submit the ticket form -->
                 <button class="btn" type="submit">Envoyer</button>
             </div>
         </form>

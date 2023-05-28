@@ -14,9 +14,12 @@
 
     <body>
         <header>
+            <!-- Website title -->
             <h1 class="base_title">LITReview</h1>
+            
             <nav class="nav">
                 {% if user.is_authenticated %}
+                    <!-- Navigation links for authenticated users -->
                     <a class="base_nav_link" href="{% url 'home' %}">Flux</a>
                     <a class="base_nav_link" href="{% url 'posts' %}">Posts</a>
                     <a class="base_nav_link" href="{% url 'subscriptions' %}">Abonnements</a>
@@ -27,6 +30,7 @@
 
         <main>
             <div class="content">
+                <!-- The main content of the website, to be filled by child templates -->
                 {% block content %}{% endblock content %}
             </div>
         </main>

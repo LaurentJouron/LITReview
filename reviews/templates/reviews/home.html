@@ -2,25 +2,31 @@
 
 {% block title %}Flux{% endblock title %}
 
+<!-- Outputting the value of the 'title' variable -->
 {{ title.title }}
 
-{% block content%}
+{% block content %}
+    <!-- Section for displaying actions related to creating a critique or a review -->
     <div class='critical'>
+        <!-- Button to request a critique -->
         <a href="{% url 'create_ticket' %}"><button class='btn flux-header-btn'>Demander une critique</button></a>
+        <!-- Button to create a review -->
         <a href="{% url 'create_review' %}"><button class='btn flux-header-btn'>Créer une critique</button></a>
     </div>
 
+    <!-- Section for displaying the posts -->
     <div class="flux">
         {% for post in posts %}
             <div class="post">
                 {% if post.content_type == 'TICKET' %}
+                    <!-- Including the 'ticket_snippet.html' file and passing the ticket and create_review=True as context variables -->
                     {% include 'reviews/ticket_snippet.html' with ticket=post create_review=True %}
                 
                 {% elif post.content_type == 'REVIEW' %}
+                    <!-- Including the 'review_snippet.html' file and passing the review and ticket=post.ticket as context variables -->
                     {% include 'reviews/review_snippet.html' with review=post ticket=post.ticket %}
                 {% endif %}
             </div>
         {% endfor %}
     </div>
 {% endblock %}
-

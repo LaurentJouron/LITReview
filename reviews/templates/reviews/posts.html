@@ -1,17 +1,36 @@
+{% load reviews_extras %}
+
 <div class='post'>
     <div class='post-date'>
+        <!-- Display the review publication notification -->
         <p>Vous avez publié une review</p>
+        <!-- Display the review creation date -->
         <p>{{ review.time_created }}</p>
     </div>
-    <h3 class='post-title'>{{ review.headline }} - {{ review.rating }}</h3>
+    <h3 class='post-title'>
+        <!-- Display the review title -->
+        {{ review.headline }}
+        <!-- Display the star rating of the review -->
+        {{ review.rating|stars }}
+    </h3>
     <div>
-        <p class='post-description'>{{ review.body }}</p>
+        <p class='post-description'>
+            <!-- Display the description of the review -->
+            {{ review.body }}
+        </p>
+        <!-- Include a snippet of the associated ticket -->
         {% include 'reviews/ticket_snippet.html' %}
     </div>
-        {% if edit_review %}
-            <div class='post-footer'>
-                <a href="{% url 'update_review' review.id %}"><button class='btn post-btn'>Modifier</button></a>
-                <a href="{% url 'delete_review' review.id %}"><button class='btn post-btn'>Supprimer</button></a>
-            </div>
-        {% endif %}
+    {% if edit_review %}
+        <div class='post-footer'>
+            <a href="{% url 'update_review' review.id %}">
+                <!-- Button to edit the review -->
+                <button class='btn post-btn'>Modifier</button>
+            </a>
+            <a href="{% url 'delete_review' review.id %}">
+                <!-- Button to delete the review -->
+                <button class='btn post-btn'>Supprimer</button>
+            </a>
+        </div>
+    {% endif %}
 </div>

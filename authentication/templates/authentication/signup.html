@@ -1,20 +1,27 @@
 {% extends 'base.html' %}
 
-{% block title %}Formulaire d'inscription{% endblock title %}
+{% block title %}Registration Form{% endblock title %}
 
 {% block content %}
-<section class="signup_register">
+    <!-- Registration section -->
+    <section class="signup_register">
         <h2 class="register__title">Inscrivez-vous</h2>
+
+        <!-- Display form errors -->
         {% if form.errors %}
             {{ form.errors }}
         {% endif %}
+
+        <!-- Registration form -->
         <form method="post">
             <div class="register__submit">
                 {{ form.as_p }}
                 {% csrf_token %}
                 <div class="register_btn">
+                    <!-- Button to go back to the login page -->
                     <a href="{% url 'login' %}"><button class="btn register_submit_btn" type='button'>Retourner</button></a>
-                    <button class="btn register_submit_btn" type="submit" >S’inscrire</button>
+                    <!-- Button to submit the registration form -->
+                    <button class="btn register_submit_btn" type="submit">S’inscrire</button>
                 </div>
             </div>
         </form>

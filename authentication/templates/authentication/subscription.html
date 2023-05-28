@@ -1,44 +1,57 @@
 {% extends "base.html" %}
 
-{% block title %}Onglet d'abonnements{% endblock title %}
+{% block title %}Subscription Tab{% endblock title %}
 
 {% block content %}
+    <!-- Div for subscriptions and subscribers -->
     <div class="subrcitpion_followers">
+        <!-- Section for following other users -->
         <section class="subrcitpion_follows__users">
             <h2>Suivre d'autres utilisateurs</h2>
+            <!-- Form for following a user -->
             <form method="POST">
                 {% csrf_token %}
                 {{ form }}
                 <input class="btn" type="submit" value="Envoyer">
+                {% if error_message %}
+                    <p class="error-message">{{ error_message }}</p>
+                {% endif %}
             </form>
         </section>
+
+        <!-- Section for subscriptions -->
         <section class="subscription">
             <h2 class="subscription__title">Abonnements</h2>
             <ul>
                 {% for subscription in subscriptions %}
-                {% if not forloop.first %}
-
-                {% endif %}
-                <li>
-                    <div class="subscription_items">
-                        <h3 class="subscription_name">{{ subscription.followed_user }}</h3>
-                        <a href="{% url 'unsubscribe' subscription.id %}"><button class="btn subscription_name__btn" type='button'>Désabonner</button></a>
-                    </div>
-                </li>
+                    {% if not forloop.first %}
+                        <!-- Add extra space between subscriptions -->
+                    {% endif %}
+                    <li>
+                        <div class="subscription_items">
+                            <h3 class="subscription_name">{{ subscription.followed_user }}</h3>
+                            <a href="{% url 'unsubscribe' subscription.id %}">
+                                <button class="btn subscription_name__btn" type='button'>Désabonner</button>
+                            </a>
+                        </div>
+                    </li>
                 {% empty %}
-                <p>Aucun abonnement</p>
+                    <p>Aucun abonnement</p>
                 {% endfor %}
             </ul>
         </section>
+
+        <!-- Section for subscribers -->
         <section class="subscription_subscribers">
             <h2 class="subscription_subscribers__title">Abonnés</h2>
             <ul>
                 {% for subscriber in subscribers %}
                     {% if not forloop.first %}
+                        <!-- Add extra space between subscribers -->
                     {% endif %}
                     <li class="subscription_subscribers__username">{{ subscriber }}</li>
                 {% empty %}
-                    <p>Aucun abonné</p>
+                <p>Aucun abonné</p>
                 {% endfor %}
             </ul>
         </section>

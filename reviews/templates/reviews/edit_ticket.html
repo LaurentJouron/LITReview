@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <!-- Title for the section displaying "Your posts" -->
     <h2 class="edit_ticket_title">Vos posts</h2>
+
+    <!-- Form for editing the post -->
     <form method="post">
         {{ edit_form.as_p }}
         {% csrf_token %}
     </form>
 
+    <!-- Form for deleting the post -->
     <form method="post">
         {{ delete_form.as_p }}
         {% csrf_token %}

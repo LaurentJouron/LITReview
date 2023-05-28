@@ -94,35 +94,29 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = "fr-fr"
+LANGUAGE_CODE = "fr-fr"  # Language code used for translations
 
-TIME_ZONE = "Europe/Paris"
+TIME_ZONE = "Europe/Paris"  # Time zone used by the application
 
-USE_I18N = True
+USE_I18N = True  # Activation support for translations
 
-USE_L10N = True
+USE_L10N = True  # Enable support for localized date and time formats
 
-USE_TZ = True
+USE_TZ = True  # Enable time zone support
 
+STATIC_URL = "static/"  # Basic URL for static files
+STATICFILES_DIRS = [BASE_DIR.joinpath('static')]  # Directory of static files
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.1/howto/static-files/
-
-STATIC_URL = "static/"
-STATICFILES_DIRS = [BASE_DIR.joinpath('static')]
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
-
+# Default Primary Key Field Type
+# Used for new tables created by Django
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-AUTH_USER_MODEL = 'authentication.User'
+AUTH_USER_MODEL = 'authentication.User'  # Custom template for users
 
-LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = LOGIN_URL
+LOGIN_URL = 'login'  # Login Page URL
+LOGIN_REDIRECT_URL = 'home'  # Redirect URL after successful login
+LOGOUT_REDIRECT_URL = LOGIN_URL  # Redirect URL after successful logout
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media/'
+MEDIA_URL = '/media/'  # Basic URL for media files
+MEDIA_ROOT = BASE_DIR / 'media/'  # Répertoire des fichiers média

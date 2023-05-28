@@ -1,31 +1,43 @@
 <div class="ticket">
     <div class='ticket_snippet'>
+        <!-- Display the user and creation time of the ticket -->
         <div class='ticket_snippet__user'>
             {% if ticket.user.username == user.username %}
+                <!-- Display a message for the current user -->
                 <p>Vous avez demandé une critique</p>
             {% else %}
+                <!-- Display a message for another user -->
                 <p>{{ ticket.user }} a demandé une critique</p>
             {% endif %}
             <p>{{ ticket.time_created }}</p>
         </div>
     
+        <!-- Display the title of the ticket -->
         <h3 class='ticket_snippet__title'>{{ ticket.title }}</h3>
+        
         <div class='ticket_snippet__detail'>
+            <!-- Display the description of the ticket -->
             <p class='post_snippet__description'>{{ ticket.description }}</p>
+            
             {% if ticket.image.url is not None %}
+                <!-- Display the image of the ticket (if available) -->
                 <p class='ticket_snippet__image'>
                     <img src='{{ ticket.image.url }}'>
                 </p>
             {% endif %}
         </div>
-            {% if edit_ticket %}
-                <div class='ticket_snippet__footer'>
-                    <a href="{% url 'update_ticket' ticket.id %}"><button class='btn ticket_snippet__btn'>Modifier</button></a>
-                    <a href="{% url 'delete_ticket' ticket.id %}"><button class='btn ticket_snippet__btn'>Supprimer</button></a>
-                </div>
-            {% elif create_review and not ticket.has_review %}
-                <div class='ticket_snippet__footer'>
-                    <a href="{% url 'create_review_selected_ticket' ticket.id %}"><button class='btn create_review_btn'>Créer une critique</button></a>            </div>
-            {% endif %}
+        
+        {% if edit_ticket %}
+            <!-- Display footer buttons for modifying the ticket -->
+            <div class='ticket_snippet__footer'>
+                <a href="{% url 'update_ticket' ticket.id %}"><button class='btn ticket_snippet__btn'>Modifier</button></a>
+                <a href="{% url 'delete_ticket' ticket.id %}"><button class='btn ticket_snippet__btn'>Supprimer</button></a>
+            </div>
+        {% elif create_review and not ticket.has_review %}
+            <!-- Display footer button for creating a review for the ticket -->
+            <div class='ticket_snippet__footer'>
+                <a href="{% url 'create_review_selected_ticket' ticket.id %}"><button class='btn create_review_btn'>Créer une critique</button></a>
+            </div>
+        {% endif %}
     </div>
 </div>

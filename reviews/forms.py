@@ -12,11 +12,9 @@ class TicketForm(forms.ModelForm):
             'description': 'Description',
             'image': 'Image',
         }
-        widget = forms.TextInput(
-            attrs={
-                'class': 'textbox textbox_title',
-            }
-        )
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'textbox textbox_title'}),
+        }
 
 
 class ReviewForm(forms.ModelForm):
