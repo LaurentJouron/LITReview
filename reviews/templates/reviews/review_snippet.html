@@ -1,3 +1,5 @@
+{% load reviews_extras %}
+
 <div class='review_snippet'>
     <!-- Display the date of the review -->
     <div class='review_snippet__date'>
@@ -6,7 +8,7 @@
     </div>
     
     <!-- Display the title and rating of the review -->
-    <h3 class='review_snippet__title'>{{ review.headline }} - {{ review.rating }}</h3>
+    <h3 class='review_snippet__title'>{{ review.headline }} - {{ review.rating|stars }}</h3>
     
     <div>
         <!-- Display the description/body of the review -->

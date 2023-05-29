@@ -6,8 +6,20 @@
 
     <!-- Form for editing the post -->
     <form method="post">
-        {{ edit_form.as_p }}
-        {% csrf_token %}
+        <div class="edit_ticket_container">
+            <span class="edit_ticket__ticket_title">{{ ticket.title }}</span>
+            <p class='edit_ticket__description'>
+                {{ ticket.description }}
+            </p>
+            {% if ticket.image.url is not None %}
+                <!-- Display the image of the ticket (if available) -->
+                <p class='edit_ticket__image'>
+                    <img class='edit_ticket__image' src='{{ ticket.image.url }}'>
+                </p>
+            {% endif %}
+            {{ edit_form.as_p }}
+            {% csrf_token %}
+        </div>
     </form>
 
     <!-- Form for deleting the post -->

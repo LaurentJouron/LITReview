@@ -5,8 +5,8 @@ from django.views.generic import View
 from django.shortcuts import render, redirect
 from itertools import chain
 
-from reviews.models import Ticket, Review
-from reviews.forms import TicketForm, ReviewForm
+from .models import Ticket, Review
+from .forms import TicketForm, ReviewForm
 from authentication.models import UserFollows
 
 
@@ -39,8 +39,8 @@ class FluxView(View):
         """
         # Get the list of users subscribed to the current user
         subscribers = [
-            user.user
-            for user in UserFollows.objects.filter(followed_user=request.user)
+            user.followed_user
+            for user in UserFollows.objects.filter(user=request.user)
         ]
 
         # Get the tickets associated with the current user or the subscribers

@@ -242,6 +242,26 @@ h2 {
 .edit_ticket_title {
     text-align: center;
 }
+.edit_ticket_container {
+    max-width: 700px;
+    margin: 0 auto;
+    margin-top: 30px;
+    height: 550px;
+    padding: 10px;
+    border: 2px black solid;
+}
+.edit_ticket__ticket_title{
+    font-size: 22px;
+    font-weight: bold;
+}
+.edit_ticket__description {
+    margin-top: 15px;
+}
+.edit_ticket__image {
+    margin-top: 15px;
+    text-align: center;
+}
+
 /*#########/!\ end edit_ticket.html /!\#########*/
 
 
@@ -273,10 +293,6 @@ h2 {
     justify-content: center;
 }
 /*#########/!\ end posts_ticket.html /!\#########*/
-
-
-/*#########/!\ posts.html /!\#########*/
-/*#########/!\ end posts.html /!\#########*/
 
 
 /*#########/!\ review_form.html /!\#########*/

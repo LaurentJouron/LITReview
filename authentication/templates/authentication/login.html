@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Home Page{% endblock title %}
+{% block title %}Page d'accueil{% endblock title %}
 
 {% block content %}
     <!-- Login section -->
@@ -13,7 +13,7 @@
         <!-- Login form -->
         <div class="login__signin">
             <h2 class="login_signin__title">Connectez-vous</h2>
-            <p>{{ message }}</p>
+            <p>{{ error_message }}</p>
             <form method="post">
                 {{ form.as_p }}
                 {% csrf_token %}

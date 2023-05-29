@@ -119,9 +119,9 @@ class LoginView(View):
                 # Redirects to the redirect URL after login.
                 return redirect(settings.LOGIN_REDIRECT_URL)
         # Error message to display in case of failed authentication.
-        message = 'Identifiants incorrects'
+        error_message = 'Identifiants incorrects'
         # Context for rendering the template.
-        context = {'form': form, 'message': message}
+        context = {'form': form, 'error_message': error_message}
         # Renders the login template with the form and the error message.
         return render(
             request,
@@ -214,6 +214,7 @@ class SubscriptionView(View):
         form = self.form_class(request.POST)
         # Get all users
         users = User.objects.all()
+
         if form.is_valid():
             # Get the username from the form data
             entry = request.POST['username'].lower()
