@@ -18,15 +18,15 @@
 
 ### ``--- Explication en français ---``
 ___________
-Cet exercice a été réalisé dans le cadre d'une formation dont voici le sujet :
-___
 
-
-
+Cet exercice a été réalisé dans le cadre d'une formation 
 ___________
 
 <h1 align="center">But de l'application</h1>
 
+LITReview a pour but de poster des tickets (livres), afin de demander l'avis à toutes les personnes qui suivent cet utilisateur. Les suiveurs en retour donnent leur avis (reviews).
+
+Le design est très simple car c'est une version MVP. Très utilisé dans le domaine du développement logiciel, le produit minimum viable, ou Minimum Viable Product (MVP), est la version “alpha” d'un produit, présentée à un public très ciblé, qui permet à l'entreprise d'obtenir un maximum de retours clients avec un minimum d'efforts.18
 
 ___________
 
@@ -34,7 +34,7 @@ ___________
 
 ___
 
-<p align="center">L'intégralité de l'application a été développer en Python - django - HTML.</p>
+<p align="center">L'intégralité de l'application a été développer en Python - django - HTML - CSS</p>
 
 <table>
   <tr>
@@ -112,9 +112,23 @@ Démarrer le serveur de développement de Django avec
 
 ___________
 
+<h1 align="center">Informations complémentaires </h1>
+
+Pour les tests il y a 4 utilisateurs
+
+  * ``Nom d'utilisateur: Louis``
+  * ``Nom d'utilisateur: Antoine``
+  * ``Nom d'utilisateur: Virginie``
+  * ``Nom d'utilisateur: Laurent``
+
+Le mot de passe est le même pour tous les profils.
+ * ``Mot de passe: S3crets*``
+
+Les avis qui sont laissés sur les livres sont faits à titre d'exemple. Ils ne tiennent pas compte de la réalité.
+___________
+
 <h1 align="center">Auteur et collaborateurs</h1>
 
-___
 
 <table>
   <tr>
