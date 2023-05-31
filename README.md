@@ -32,7 +32,6 @@ ___________
 
 <h1 align="center">Langage</h1>
 
-___
 
 <p align="center">L'intégralité de l'application a été développer en Python - django - HTML - CSS</p>
 
@@ -73,7 +72,6 @@ ___________
 
 <h1 align="center">EDI</h1>
 
-___
 
 <p align="left">L'EDI utilisé pour la programmation est Pycharm et Visual Studio Code.
 
@@ -95,10 +93,6 @@ ___
     </td>
   </tr>
 </table>
-
-
-___________
-
 
 ___________
 
