@@ -45,6 +45,27 @@ ___
         <sub><b>Téléchargez Python</b></sub></a><br />
       <a href=https://www.python.org/" title="Téléchargez Python" ></a> 
     </td>
+    <td align="center">
+      <a href="https://www.djangoproject.com/">
+        <img width="200px"
+          src="https://static.djangoproject.com/img/logos/django-logo-negative.png" /><br />
+        <sub><b>Doc Django</b></sub></a><br />
+      <a href="https://www.djangoproject.com/" title="Doc Django" ></a> 
+    </td>
+    <td align="center">
+      <a href="https://developer.mozilla.org/fr/docs/Web/HTML">
+        <img width="100px"
+          src="https://cdn.pixabay.com/photo/2017/08/05/11/16/logo-2582748__340.png" /><br />
+        <sub><b>HTML</b></sub></a><br />
+      <a href="https://developer.mozilla.org/fr/docs/Web/HTML" title="HTML" ></a> 
+    </td>
+    <td align="center">
+      <a href="https://developer.mozilla.org/fr/docs/Web/CSS">
+        <img width="100px"
+          src="https://cdn.pixabay.com/photo/2017/08/05/11/16/logo-2582747__340.png" /><br />
+        <sub><b>CSS</b></sub></a><br />
+      <a href="https://developer.mozilla.org/fr/docs/Web/CSS" title="CSS" ></a> 
+    </td>
   </tr>
 </table>
 
