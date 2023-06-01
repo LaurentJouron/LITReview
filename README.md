@@ -26,7 +26,7 @@ ___________
 
 LITReview a pour but de poster des tickets (livres), afin de demander l'avis à toutes les personnes qui suivent cet utilisateur. Les suiveurs en retour donnent leur avis (reviews).
 
-Le design est très simple car c'est une version MVP. Très utilisé dans le domaine du développement logiciel, le produit minimum viable, ou Minimum Viable Product (MVP), est la version “alpha” d'un produit, présentée à un public très ciblé, qui permet à l'entreprise d'obtenir un maximum de retours clients avec un minimum d'efforts.18
+Le design est très simple car c'est une version MVP. Très utilisé dans le domaine du développement logiciel, le produit minimum viable, ou Minimum Viable Product (MVP), est la version “alpha” d'un produit, présentée à un public très ciblé, qui permet à l'entreprise d'obtenir un maximum de retours clients avec un minimum d'efforts.
 
 ___________
 
