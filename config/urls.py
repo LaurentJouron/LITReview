@@ -9,7 +9,7 @@ urlpatterns = [
     # Inclusion of "reviews" application URLs
     path("", include('reviews.urls')),
     # Inclusion of "authentication" application URLs
-    path("authentication", include('authentication.urls')),
+    path("authentication/", include('authentication.urls')),
 ]
 
 # Added static URLs for media files in DEBUG mode

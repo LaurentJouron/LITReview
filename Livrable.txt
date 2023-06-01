@@ -1,0 +1,61 @@
+Projet 9 - OpenClassrooms - LITReview
+
+Lien vers le repository github:
+    https://github.com/LaurentJouron/LITReview/
+
+Le README.md explique très clairement comment installer le projet. Voici un rappelle simplifier:
+    La documentation officielle de Python recommande d'utiliser pipenv, voici les lignes de commande pour l'installer si besoin.
+        pip install pipx
+        pipx ensurepath
+        pipx install pipenv
+
+Cloner le projet et se positionner dans le dossier à l'aide des commandes suivantes :
+    git clone https://github.com/LaurentJouron/LITReview.git
+    cd LITReview
+
+Voici la procédure pour afficher la page d'accueil du site:
+    Créer un répertoire avec le nom .venv:
+        mkdir .venv
+        pipenv install
+    Activer l'environnement de travail (environnement virtuel) et démarrer le serveur local:
+        pipenv shell
+        python manage.py runserver
+
+Ce projet est réalisé en version MVP (Minimum Viable Product). Son design est des plus simple. Le plus important c'est le fonctionnement de l'application elle même.
+
+La page d'accueil:
+    - Il y a 2 cellules de saisie pour se connecter à l'application à l'aide du bouton se connecter.
+    - Un bouton pour d'inscrire si le compte n'est pas encore créer. Ce boutton redirige vers le frormulaire d'inscription.
+
+Le formulaire d'inscription:
+    - Il y a 3 cellules. Le première pour saisie le nom d'utilisation et 2 autres pour le mot de passe a confirmer.
+    - Le bouton retour permeet de revenir à l'accueil, alors que s'inscrire conduit au flux de LITReview.
+
+Le flux:
+    - Il y a tous les tickets que la personne authentifiée a posté et ceux des personnes que qu'il suis.
+    - Il y a les reviews des tickets posté par les personnes suivis.
+    - Tous les tickets et reviews sont horodatés.
+    - Le bouton demande une critique donne l'accès à une demande de critique simple
+        - Donner un titre de livre
+        - Une description
+        - Une image
+        - Le bouton envoyé valide l'enregistrement du ticket.
+    - Le bouton créer une critique fait la même chose que demande une critique mais il rajoute
+        - La notation du livre et un commentaire sur le livre.
+        - En clair, il créer le ticket et les reviews en même temps.
+
+Le bouton créer une critique qui s'affiche sous un livre permet d'ajouter une note et un avis à un livre posté par une personne que l'utilisateur suis.
+
+Posts:
+    - C'est dans cet onglet que l'utilisateur voit les tickets qu'il à posté.
+    - Il peux modifier le ticket ou le supprimer gâce aux boutons mis à disposition
+    - Si l'utilisateur demande la modification, il accède à la possibilité de modifier directement.
+    - Si l'utilisateur demande la suppression, le programme demande une confirmation.
+
+Abonnements:
+    - La première partie permet saisir le nom de la personne que l'on souhaite suivre.
+    - La partie centrale permet de voir la liste des personnes que suis l'utilisateur. Il a la possibilité de se désabonner et une confirmation lui est demandé.
+    - En dernière partie, l'utilisateur voit les personnes qui le suivent.
+
+Se déconnecter
+    - Ce bouton permet de se déconnecter de l'application et de retourner à la page de d'accueil du site, au niveau du login.
