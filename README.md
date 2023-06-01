@@ -26,13 +26,12 @@ ___________
 
 LITReview a pour but de poster des tickets (livres), afin de demander l'avis à toutes les personnes qui suivent cet utilisateur. Les suiveurs en retour donnent leur avis (reviews).
 
-Le design est très simple car c'est une version MVP. Très utilisé dans le domaine du développement logiciel, le produit minimum viable, ou Minimum Viable Product (MVP), est la version “alpha” d'un produit, présentée à un public très ciblé, qui permet à l'entreprise d'obtenir un maximum de retours clients avec un minimum d'efforts.18
+Le design est très simple car c'est une version MVP. Très utilisé dans le domaine du développement logiciel, le produit minimum viable, ou Minimum Viable Product (MVP), est la version “alpha” d'un produit, présentée à un public très ciblé, qui permet à l'entreprise d'obtenir un maximum de retours clients avec un minimum d'efforts.
 
 ___________
 
 <h1 align="center">Langage</h1>
 
-___
 
 <p align="center">L'intégralité de l'application a été développer en Python - django - HTML - CSS</p>
 
@@ -45,6 +44,27 @@ ___
         <sub><b>Téléchargez Python</b></sub></a><br />
       <a href=https://www.python.org/" title="Téléchargez Python" ></a> 
     </td>
+    <td align="center">
+      <a href="https://www.djangoproject.com/">
+        <img width="200px"
+          src="https://static.djangoproject.com/img/logos/django-logo-negative.png" /><br />
+        <sub><b>Doc Django</b></sub></a><br />
+      <a href="https://www.djangoproject.com/" title="Doc Django" ></a> 
+    </td>
+    <td align="center">
+      <a href="https://developer.mozilla.org/fr/docs/Web/HTML">
+        <img width="100px"
+          src="https://cdn.pixabay.com/photo/2017/08/05/11/16/logo-2582748__340.png" /><br />
+        <sub><b>HTML</b></sub></a><br />
+      <a href="https://developer.mozilla.org/fr/docs/Web/HTML" title="HTML" ></a> 
+    </td>
+    <td align="center">
+      <a href="https://developer.mozilla.org/fr/docs/Web/CSS">
+        <img width="100px"
+          src="https://cdn.pixabay.com/photo/2017/08/05/11/16/logo-2582747__340.png" /><br />
+        <sub><b>CSS</b></sub></a><br />
+      <a href="https://developer.mozilla.org/fr/docs/Web/CSS" title="CSS" ></a> 
+    </td>
   </tr>
 </table>
 
@@ -52,7 +72,6 @@ ___________
 
 <h1 align="center">EDI</h1>
 
-___
 
 <p align="left">L'EDI utilisé pour la programmation est Pycharm et Visual Studio Code.
 
@@ -74,10 +93,6 @@ ___
     </td>
   </tr>
 </table>
-
-
-___________
-
 
 ___________
 
