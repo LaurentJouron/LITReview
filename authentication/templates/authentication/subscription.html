@@ -3,12 +3,9 @@
 {% block title %}Onglet d'abonnements{% endblock title %}
 
 {% block content %}
-    <!-- Div for subscriptions and subscribers -->
     <div class="subrcitpion_followers">
-        <!-- Section for following other users -->
         <section class="subrcitpion_follows__users">
             <h2>Suivre d'autres utilisateurs</h2>
-            <!-- Form for following a user -->
             <form method="POST">
                 {% csrf_token %}
                 {{ form }}
@@ -19,13 +16,11 @@
             </form>
         </section>
 
-        <!-- Section for subscriptions -->
         <section class="subscription">
             <h2 class="subscription__title">Abonnements</h2>
             <ul>
                 {% for subscription in subscriptions %}
                     {% if not forloop.first %}
-                        <!-- Add extra space between subscriptions -->
                     {% endif %}
                     <li>
                         <div class="subscription_items">
@@ -41,13 +36,11 @@
             </ul>
         </section>
 
-        <!-- Section for subscribers -->
         <section class="subscription_subscribers">
             <h2 class="subscription_subscribers__title">Abonnés</h2>
             <ul>
                 {% for subscriber in subscribers %}
                     {% if not forloop.first %}
-                        <!-- Add extra space between subscribers -->
                     {% endif %}
                     <li class="subscription_subscribers__username">{{ subscriber }}</li>
                 {% empty %}

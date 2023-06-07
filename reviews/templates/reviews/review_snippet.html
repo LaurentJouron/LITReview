@@ -1,30 +1,23 @@
 {% load reviews_extras %}
 
 <div class='review_snippet'>
-    <!-- Display the date of the review -->
     <div class='review_snippet__date'>
         <p>Vous avez publié une review</p>
         <p>{{ review.time_created }}</p>
     </div>
     
-    <!-- Display the title and rating of the review -->
     <h3 class='review_snippet__title'>{{ review.headline }} - {{ review.rating|stars }}</h3>
     
     <div>
-        <!-- Display the description/body of the review -->
         <p class='review_snippet__description'>{{ review.body }}</p>
         
-        <!-- Include the 'ticket_snippet.html' file -->
         {% include 'reviews/ticket_snippet.html' %}
     </div>
     
-    <!-- Conditionally display the footer buttons for editing and deleting the review -->
     {% if edit_review %}
         <div class='review_snippet__footer'>
-            <!-- Button to modify the review -->
             <a href="{% url 'update_review' review.id %}"><button class='btn post_modify__btn'>Modifier</button></a>
-            
-            <!-- Button to delete the review -->
+
             <a href="{% url 'delete_review' review.id %}"><button class='btn post_delete__btn'>Supprimer</button></a>
         </div>
     {% endif %}

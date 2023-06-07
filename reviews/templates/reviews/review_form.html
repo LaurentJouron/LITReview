@@ -2,25 +2,19 @@
 
 {% block content %}
     <section>
-        <!-- Conditionally display the title based on the 'mode' variable -->
         {% if mode == 'CREATION' %}
-            <!-- Title for creating a critique -->
             <h2 class='review_form__title'>Créer une critique</h2>
         {% elif mode == 'EDITING' %}
-            <!-- Title for editing a critique -->
             <h2 class='review_form__title'>Modifier votre critique</h2>
         {% endif %}
 
-        <!-- Form for creating/editing a review -->
         <form class='review_form__create' action="" method="post" enctype='multipart/form-data'>
             {% csrf_token %}
 
             {% if existing_ticket %}
-                <!-- Display information about posting as a response to a ticket -->
                 <p>Vous êtes en train de poster en réponse à {{ ticket.user }}</p>
                 {% include 'reviews/ticket_snippet.html' %} 
             {% elif not existing_ticket %}
-                <!-- Display form for creating a new ticket -->
                 <div class="book_article">
                     <p>Livre / Article</p>
                     <h4 class="review_form_label__title">{{ ticket_form.title.label }}</h4>
@@ -34,7 +28,6 @@
                 </div>
             {% endif %}
 
-            <!-- Form for entering the review details -->
             <div class="critical_article">
                 <p>Critique</p>
                 <h4 class="review_form_critical_label__title">{{ review_form.headline.label }}</h4>
@@ -42,7 +35,6 @@
 
                 <h4 class="review_form_critical_label__rating">{{ review_form.rating.label }}</h4>
                 <element class='review_form_critical__rating'>
-                    <!-- Loop through the rating options -->
                     {% for value in review_form.rating %}
                         <p>{{ value }}</p>
                     {% endfor %}

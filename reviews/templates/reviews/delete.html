@@ -2,19 +2,15 @@
     <section>
         {% if content_type == 'TICKET' %}
             {% include 'reviews/edit_ticket.html' %}
-                <!-- Display the title "Delete your request" if the content type is a ticket -->
                 <h2 class="delete__title">Supprimer votre demande</h2>
         {% elif content_type == 'REVIEW' %}
             {% include 'reviews/edit_ticket.html' with ticket=review.ticket %}
-                <!-- Display the title "Delete your review" if the content type is a review -->
                 <h2 class="delete__title">Supprimer votre critique</h2>
         {% endif %}
         <div class="delete_container">
             <form action="" method="post" enctype='multipart/form-data'>
             {% csrf_token %}
-                <!-- Button to go back to the posts URL -->
                 <a href="{% url 'posts' %}"><button class='btn back_submit_btn' type='button'>Retour</button></a>
-                <!-- Button to submit the form for deletion -->
                 <input class='btn delete_submit_btn' type="submit" value="Supprimer">
             </form>
         </div>

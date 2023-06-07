@@ -2,16 +2,13 @@
 
 {% block content %}
     <section>
-        <!-- Title for the section displaying "Your posts" -->
         <h2 class="post_ticket_title">Vos posts</h2>
 
         {% for post in posts %}
             {% if post.content_type == 'TICKET' %}
-                <!-- Including the 'ticket_snippet.html' file and passing the ticket and edit_ticket=True as context variables -->
                 {% include 'reviews/ticket_snippet.html' with ticket=post edit_ticket=True %}
                 
             {% elif post.content_type == 'REVIEW' %}
-                <!-- Including the 'review_snippet.html' file and passing the review, ticket=post.ticket, and edit_review=True as context variables -->
                 {% include 'reviews/review_snippet.html' with review=post ticket=post.ticket edit_review=True %}
             {% endif %}
         {% endfor %}
